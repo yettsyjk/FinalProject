@@ -16,10 +16,10 @@
 ### Table of REST Endpoints
 | Verb   |   URI  | Request Body | Description |
 |--------|--------|--------------|-------------|
-|  POST  | api/cycles | Representation of new entry | Creates a new cycle entry |
-|  GET   | api/cycles/{id} | Representation of entry at id number-- {id} | Retrieves a list of entries by id |
-|  PUT  | api/cycles/{id} | Representation of a *new version* of entry at id number--{id}| Updates an existing entry |
-|  DELETE  | api/cycles/{id} | Representation of an entry to be deleted | Removes an entry by id |
+|  POST  | api/ | Representation of new entry | Creates a new cycle entry |
+|  GET   | api/ /{id} | Representation of entry at id number-- {id} | Retrieves a list of entries by id |
+|  PUT  | api/  /{id} | Representation of a *new version* of entry at id number--{id}| Updates an existing entry |
+|  DELETE  | api/ /{id} | Representation of an entry to be deleted | Removes an entry by id |
 
 
 ## Tech Used
