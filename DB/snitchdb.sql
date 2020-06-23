@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `snitchdb` DEFAULT CHARACTER SET utf8 ;
 USE `snitchdb` ;
 
 -- -----------------------------------------------------
--- Table `inmate`
+-- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `inmate` ;
+DROP TABLE IF EXISTS `user` ;
 
-CREATE TABLE IF NOT EXISTS `inmate` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `snitch` (
   INDEX `fk_snitch_address1_idx` (`address_id` ASC),
   CONSTRAINT `fk_snitch_inmate`
     FOREIGN KEY (`inmate_id`)
-    REFERENCES `inmate` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_snitch_address1`
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comment_inmate1`
     FOREIGN KEY (`inmate_id`)
-    REFERENCES `inmate` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `snitch_vote` (
   INDEX `fk_inmate_has_snitch_inmate1_idx` (`inmate_id` ASC),
   CONSTRAINT `fk_inmate_has_snitch_inmate1`
     FOREIGN KEY (`inmate_id`)
-    REFERENCES `inmate` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_inmate_has_snitch_snitch1`
@@ -153,11 +153,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `inmate`
+-- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `snitchdb`;
-INSERT INTO `inmate` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `create_date`) VALUES (1, 'admin', 'admin@admin.com', 'admin', 'admin', 'administrator', 'admin', DEFAULT, NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `create_date`) VALUES (1, 'admin', 'admin@admin.com', 'admin', 'admin', 'administrator', 'admin', DEFAULT, NULL);
 
 COMMIT;
 

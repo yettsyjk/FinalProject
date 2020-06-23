@@ -4,20 +4,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
-	<persistence-unit name="SnithPU">
+	<persistence-unit name="snitchPU">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
    		
-		<class>com.skilldistillery.snitchapp.entities.User</class>
+		<class>com.skilldistillery.snitchapp.entities.Inmate</class>
 	
 		
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/FIXME?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
-			<property name="javax.persistence.jdbc.user" value="FIXME" />
+				value="jdbc:mysql://localhost:3306/snitchdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
+			<property name="javax.persistence.jdbc.user" value="snitchuser" />
 			<property name="javax.persistence.jdbc.password"
-				value="FIXME" />
+				value="snitchuser" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 
