@@ -60,6 +60,21 @@ class AlertTest {
 		assertEquals("Alert! meow.", alert.getContent() );
 	}
 	
+	@Test
+	@DisplayName("mapping Alert to Category")
+	void testAlertToCategory() {
+		assertNotNull(alert);
+		assertNotNull(alert.getCategory());
+		assertEquals("Traffic", alert.getCategory().getName());
+	}
+	
+	@Test
+	@DisplayName("mapping Alert to User")
+	void testAlertToUser() {
+		assertNotNull(alert);
+		assertNotNull(alert.getUser());
+		assertEquals("admin", alert.getUser().getUsername());
+	}
 	
 
 }

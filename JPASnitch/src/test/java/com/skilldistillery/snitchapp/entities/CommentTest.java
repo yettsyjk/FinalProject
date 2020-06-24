@@ -53,9 +53,19 @@ class CommentTest {
 	}
 	
 	
+	@Test
+	@DisplayName("mapping Comment to Snitch")
+	void testCommentToSnitch() {
+		assertNotNull(comment.getSnitch());
+		assertEquals("Angry Yetis on Main St", comment.getSnitch().getTitle());
+	}
 	
-	
-	
+	@Test
+	@DisplayName("mapping Comment to User")
+	void testCommentToUser() {
+		assertNotNull(comment.getUser());
+		assertEquals("user2", comment.getUser().getUsername());
+	}
 	
 
 }

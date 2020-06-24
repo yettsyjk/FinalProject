@@ -2,6 +2,7 @@ package com.skilldistillery.snitchapp.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -51,6 +52,22 @@ class CategoryTest {
 		assertEquals("Traffic", category.getName());
 	}
 	
+	@Test
+	@DisplayName("Category to Snitch ")
+	void testCategoryToSnitch() {
+		assertNotNull(category);
+		assertNotNull(category.getSnitches());
+		assertTrue(category.getSnitches().size() > 0);
+		assertEquals("Angry Yetis on Main St", category.getSnitches().get(0).getTitle());
+	}
 	
+	@Test
+	@DisplayName("Category to Alert ")
+	void testCategoryToAlert() {
+		assertNotNull(category);
+		assertNotNull(category.getAlerts());
+		assertTrue(category.getAlerts().size() > 0);
+		assertEquals("Alert! meow.", category.getAlerts().get(0).getContent());
+	}
 
 }

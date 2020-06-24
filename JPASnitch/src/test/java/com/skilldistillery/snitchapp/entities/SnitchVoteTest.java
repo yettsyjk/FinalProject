@@ -50,7 +50,7 @@ class SnitchVoteTest {
 	}
 	@Test
 	@DisplayName("SnitchVote test verify not null")
-	void testSnitchVoter() {
+	void testSnitchVote() {
 		assertNull(snitchVote);
 //		assertEquals(null, snitchVote.getNote());
 	}//is null expect red
