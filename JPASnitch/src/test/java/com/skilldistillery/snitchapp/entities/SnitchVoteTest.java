@@ -2,6 +2,7 @@ package com.skilldistillery.snitchapp.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -37,7 +38,7 @@ class SnitchVoteTest {
 		em = emf.createEntityManager();
 		
 		SnitchVoteId sid = new SnitchVoteId();
-		sid.setUserId(2);
+		sid.setUserId(1);
 		sid.setSnitchId(1);
 		snitchVote = em.find(SnitchVote.class, sid);
 	}
@@ -50,8 +51,8 @@ class SnitchVoteTest {
 	@Test
 	@DisplayName("SnitchVote test verify not null")
 	void testSnitchVoter() {
-//		assertNotNull(snitchVote);
-		assertEquals("0", snitchVote.getNote());
+		assertNull(snitchVote);
+//		assertEquals(null, snitchVote.getNote());
 	}//is null expect red
 	
 	

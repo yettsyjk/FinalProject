@@ -47,7 +47,7 @@ class CommentTest {
 	
 	@Test
 	@DisplayName("mapping Comment")
-	void testCommeny() {
+	void testComment() {
 		assertNotNull(comment);
 		assertEquals("Ya'll crazy!!!", comment.getContent());
 	}

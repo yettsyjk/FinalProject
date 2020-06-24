@@ -2,7 +2,6 @@ package com.skilldistillery.snitchapp.entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,64 +10,48 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Snitch {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	private String title;
-	
-	private String description;	
-
+	private String description;
 	@CreationTimestamp
-	@Column (name= "create_date")
+	@Column(name = "create_date")
 	private LocalDateTime createDate;
-	
-	@Column (name= "img_url")
-	private String imgUrl; 
-	
+	@Column(name = "img_url")
+	private String imgUrl;
 	private Boolean enabled;
-	
 	private Boolean resolved;
-	
-	@Column (name= "resolution_date")
+	@Column(name = "resolution_date")
 	private LocalDateTime resolutionDate;
-	
 	private String resolution;
-
 	// relationship between Snitches and User observer(user creates snitches)
 	@ManyToOne
-	@JoinColumn (name= "user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@OneToMany (mappedBy = "snitch")
-	private List <SnitchVoteTest> votes;
-	
+	@OneToMany(mappedBy = "snitch")
+	private List<SnitchVote> votes;
 	@ManyToOne
-	@JoinColumn (name= "address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
 	@ManyToOne
-	@JoinColumn (name= "category_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
-	
-	@OneToMany (mappedBy = "snitch")
+	@OneToMany(mappedBy = "snitch")
 	private List<Comment> comments;
-	
-	//methods
-	
+
+	// methods
 	public Snitch() {
 		super();
 	}
 
 	public Snitch(int id, Address address, String title, String description, LocalDateTime createDate, String imgUrl,
 			Boolean enabled, Boolean resolved, LocalDateTime resolutionDate, String resolution, User user,
-			List<SnitchVoteTest> votes, Category category, List<Comment> comments) {
+			List<SnitchVote> votes, Category category, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -174,11 +157,11 @@ public class Snitch {
 		this.user = user;
 	}
 
-	public List<SnitchVoteTest> getVotes() {
+	public List<SnitchVote> getVotes() {
 		return votes;
 	}
 
-	public void setVotes(List<SnitchVoteTest> votes) {
+	public void setVotes(List<SnitchVote> votes) {
 		this.votes = votes;
 	}
 
@@ -227,7 +210,4 @@ public class Snitch {
 				+ resolutionDate + ", resolution=" + resolution + ", user=" + user + ", address=" + address
 				+ ", category=" + category + "]";
 	}
-
-	
-	
 }

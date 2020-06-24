@@ -7,15 +7,21 @@
 	<persistence-unit name="snitchPU">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
-   		
-		<class>com.skilldistillery.snitchapp.entities.Inmate</class>
-	
-		
-		
+
+		<class>com.skilldistillery.snitchapp.entities.Address</class>
+		<class>com.skilldistillery.snitchapp.entities.Alert</class>
+		<class>com.skilldistillery.snitchapp.entities.Category</class>
+		<class>com.skilldistillery.snitchapp.entities.Comment</class>
+		<class>com.skilldistillery.snitchapp.entities.Role</class>
+		<class>com.skilldistillery.snitchapp.entities.Snitch</class>
+		<class>com.skilldistillery.snitchapp.entities.SnitchVote</class>
+		<class>com.skilldistillery.snitchapp.entities.User</class>
+
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/snitchdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
-			<property name="javax.persistence.jdbc.user" value="snitchuser" />
+			<property name="javax.persistence.jdbc.user"
+				value="snitchuser" />
 			<property name="javax.persistence.jdbc.password"
 				value="snitchuser" />
 			<property name="javax.persistence.jdbc.driver"
