@@ -36,7 +36,10 @@ class SnitchVote {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		
-		snitchVote = em.find(SnitchVote.class, 1);
+		SnitchVote sid = new SnitchVote();
+		sid.setUserId(2);
+		sid.setSnitchId(1);
+		snitchVote = em.find(SnitchVote.class, sid);
 	}
 
 	@AfterEach
