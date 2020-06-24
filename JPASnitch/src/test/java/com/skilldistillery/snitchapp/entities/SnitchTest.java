@@ -14,13 +14,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
-		private static  EntityManagerFactory emf;
-		private static EntityManager em;
-		
-		private User user;
+class SnitchTest {
+	private static  EntityManagerFactory emf;
+	private static EntityManager em;
 	
-		
+	
+	private Snitch snitch;
+	
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("snitchPU");
@@ -35,33 +36,31 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		
-		user = em.find(User.class, 2);
+	
+		snitch = em.find(Snitch.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-	
-		user = null;
+		snitch = null;
 	}
 	
 	@Test
-	@DisplayName("not null verified")
+	@DisplayName("Snitch test verify not null")
 	void testSnitchAndUser() {
-		assertNotNull(user);
+		assertNotNull(snitch);
 	}
 	
-
+	
 	@Test
-	@DisplayName("User mapping to fields")
-	void testUserEntityMapping() {
-		
-		assertNotNull(user);
-		assertEquals("u@u.com", user.getEmail());
-		assertEquals("user", user.getUsername());
-		assertEquals(2, user.getId());
+	@DisplayName("testing Snitch ")
+	void testSnitchFields() {
+		assertEquals("Angry Yetis on Main St", snitch.getTitle());
+		assertEquals("There is a wild animal prowling around downtown, yelling System.exit() at everyone", snitch.getDescription);
 	}
+	
+	
 	
 	
 

@@ -1,6 +1,5 @@
 package com.skilldistillery.snitchapp.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
@@ -14,13 +13,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
-		private static  EntityManagerFactory emf;
-		private static EntityManager em;
-		
-		private User user;
+class AddressTest {
+	private static  EntityManagerFactory emf;
+	private static EntityManager em;
 	
-		
+	private Address address;
+	
+	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("snitchPU");
@@ -35,34 +34,39 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		
-		user = em.find(User.class, 2);
+		address = em.find(Address.class, 1);
+
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
+		address = null;
+	}
 	
-		user = null;
+	
+	@Test
+	@DisplayName("mapping Address not null")
+	void testAlert() {
+		assertNotNull(address);
 	}
 	
 	@Test
-	@DisplayName("not null verified")
-	void testSnitchAndUser() {
-		assertNotNull(user);
+	@DisplayName("mapping Address fields")
+	void testAddress() {
+		assertNotNull(address);
+		assertEquals("123 Main St", address.getStreet() );
+		assertEquals("Parker", address.getCity() );
+		assertEquals(80138, address.getZip() );
 	}
 	
-
 	@Test
-	@DisplayName("User mapping to fields")
-	void testUserEntityMapping() {
-		
-		assertNotNull(user);
-		assertEquals("u@u.com", user.getEmail());
-		assertEquals("user", user.getUsername());
-		assertEquals(2, user.getId());
+	@DisplayName("mapping Address to Snitch")
+	void testAlertSnitch() {
+		assertNotNull(address);
+		assertNotNull(address.getSnitches());
+		assertTrue(address.getSnitches.size() > 0);
 	}
-	
 	
 
 }
