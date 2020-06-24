@@ -6,6 +6,7 @@ import com.skilldistillery.snitchapp.entities.User;
 
 public interface UserService {
 
+
 	User updateProfile(Integer userId, User user); //String username(might have to use)
 	User findById(Integer userId);
 	User findUserByUsername(String username);
@@ -13,3 +14,5 @@ public interface UserService {
 	Boolean remove(Integer userId);
 	
 }
+
+
