@@ -19,10 +19,6 @@ public class Alert {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn (name= "category_id")
-	private Category cagtegory;
-	
 	private String subject;
 	
 	private String content;
@@ -36,6 +32,10 @@ public class Alert {
 	@ManyToOne
 	@JoinColumn (name= "user_id")
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn (name= "category_id")
+	private Category cagtegory;
 	
 	// method
 	

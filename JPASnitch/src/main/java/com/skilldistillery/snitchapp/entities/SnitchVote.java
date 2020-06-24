@@ -3,7 +3,11 @@ package com.skilldistillery.snitchapp.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,12 +15,9 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table (name="snitch_vote")
 @Entity
 public class SnitchVote {    
-
-	@Column (name="user_id")
-	private Integer userId;
 	
-	@Column (name="snitch_id")
-	private Integer snitchId;
+	@EmbeddedId
+	private SnitchVoteId id;
 	
 	private Boolean vote;
 	
@@ -26,40 +27,60 @@ public class SnitchVote {
 	
 	private String note;
 
+	@MapsId (value = "userId")
+	@ManyToOne
+	@JoinColumn (name = "user_id")
+	private User user;
+	
+	@MapsId (value = "snitchId")
+	@ManyToOne
+	@JoinColumn (name = "snitch_id")
+	private Snitch snitch;
 	
 	//methods
+	
 	public SnitchVote() {
 		super();
 	}
 
-
-	public SnitchVote(Integer userId, Integer snitchId, Boolean vote, LocalDateTime createTime, String note) {
+	public SnitchVote(SnitchVoteId id, User user, Snitch snitch, Boolean vote, LocalDateTime createTime, String note) {
 		super();
-		this.userId = userId;
-		this.snitchId = snitchId;
+		this.id = id;
+		this.user = user;
+		this.snitch = snitch;
 		this.vote = vote;
 		this.createTime = createTime;
 		this.note = note;
 	}
 
 
-	public Integer getUserId() {
-		return userId;
+	public SnitchVoteId getId() {
+		return id;
 	}
 
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setId(SnitchVoteId id) {
+		this.id = id;
 	}
 
 
-	public Integer getSnitchId() {
-		return snitchId;
+	public User getUser() {
+		return user;
 	}
 
 
-	public void setSnitchId(Integer snitchId) {
-		this.snitchId = snitchId;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Snitch getSnitch() {
+		return snitch;
+	}
+
+
+	public void setSnitch(Snitch snitch) {
+		this.snitch = snitch;
 	}
 
 
@@ -94,10 +115,38 @@ public class SnitchVote {
 
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SnitchVote other = (SnitchVote) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+
+	@Override
 	public String toString() {
-		return "SnitchVote [userId=" + userId + ", snitchId=" + snitchId + ", vote=" + vote + ", createTime="
+		return "SnitchVote [id=" + id + ", user=" + user + ", snitch=" + snitch + ", vote=" + vote + ", createTime="
 				+ createTime + ", note=" + note + "]";
 	}
+
 	
 	
 }

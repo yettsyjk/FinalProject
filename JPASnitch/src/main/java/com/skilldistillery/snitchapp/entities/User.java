@@ -10,7 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -58,9 +57,13 @@ public class User {
 	
 	// relationship between Users and Snitches(users voting on snitches)
 	// join on table snitch_vote
-	@ManyToMany(mappedBy="observers")
-	private List <Snitch> snitchVotes;
 	
+	@OneToMany (mappedBy = "user")
+	private List <SnitchVote> votes;
+	
+	@OneToMany (mappedBy ="user")
+	private List <Comment> comments;
+
 	
 	//methods
 	
@@ -68,19 +71,24 @@ public class User {
 		super();
 	}
 
-	public User(int id, String username, String email, String password, String firstname, String lastName,
-			Boolean enabled, String pictureUrl, LocalDateTime createDate, Role role) {
+	public User(int id, String username, String email, String password, String firstName, String lastName,
+			Boolean enabled, String pictureUrl, LocalDateTime createDate, Role role, List<Alert> alerts,
+			List<Snitch> snitchesCreated, List<SnitchVote> votes, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.firstName = firstname;
+		this.firstName = firstName;
 		this.lastName = lastName;
 		this.enabled = enabled;
 		this.pictureUrl = pictureUrl;
 		this.createDate = createDate;
 		this.role = role;
+		this.alerts = alerts;
+		this.snitchesCreated = snitchesCreated;
+		this.votes = votes;
+		this.comments = comments;
 	}
 
 	public int getId() {
@@ -115,12 +123,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstname() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstName = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -163,6 +171,38 @@ public class User {
 		this.role = role;
 	}
 
+	public List<Alert> getAlerts() {
+		return alerts;
+	}
+
+	public void setAlerts(List<Alert> alerts) {
+		this.alerts = alerts;
+	}
+
+	public List<Snitch> getSnitchesCreated() {
+		return snitchesCreated;
+	}
+
+	public void setSnitchesCreated(List<Snitch> snitchesCreated) {
+		this.snitchesCreated = snitchesCreated;
+	}
+
+	public List<SnitchVote> getVotes() {
+		return votes;
+	}
+
+	public void setVotes(List<SnitchVote> votes) {
+		this.votes = votes;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -188,9 +228,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", firstname=" + firstName + ", lastName=" + lastName + ", enabled=" + enabled + ", pictureUrl="
-				+ pictureUrl + ", createDate=" + createDate + "]";
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", enabled=" + enabled + ", pictureUrl="
+				+ pictureUrl + ", createDate=" + createDate + ", role=" + role + "]";
 	}
-	
+
 	
 }

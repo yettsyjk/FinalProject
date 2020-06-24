@@ -9,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -22,10 +20,6 @@ public class Snitch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@ManyToOne
-	@JoinColumn (name= "address_id")
-	private Address address;
 	
 	private String title;
 	
@@ -52,13 +46,12 @@ public class Snitch {
 	@JoinColumn (name= "user_id")
 	private User user;
 	
-	// relationship between Snitches and Users(users voting on snitches)
-	// join on table snitch_vote
-	@ManyToMany
-	@JoinTable (name= "snitch_vote", // JSON IGNORE???? CASCADE ????
-		joinColumns = @JoinColumn(name= "snitch_id"),
-		inverseJoinColumns= @JoinColumn(name = "user_id"))
-	private List<User> observers;
+	@OneToMany (mappedBy = "snitch")
+	private List <SnitchVote> votes;
+	
+	@ManyToOne
+	@JoinColumn (name= "address_id")
+	private Address address;
 	
 	@ManyToOne
 	@JoinColumn (name= "category_id")
@@ -75,7 +68,7 @@ public class Snitch {
 
 	public Snitch(int id, Address address, String title, String description, LocalDateTime createDate, String imgUrl,
 			Boolean enabled, Boolean resolved, LocalDateTime resolutionDate, String resolution, User user,
-			List<User> observers, Category category, List<Comment> comments) {
+			List<SnitchVote> votes, Category category, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -88,7 +81,7 @@ public class Snitch {
 		this.resolutionDate = resolutionDate;
 		this.resolution = resolution;
 		this.user = user;
-		this.observers = observers;
+		this.votes = votes;
 		this.category = category;
 		this.comments = comments;
 	}
@@ -181,12 +174,12 @@ public class Snitch {
 		this.user = user;
 	}
 
-	public List<User> getObservers() {
-		return observers;
+	public List<SnitchVote> getVotes() {
+		return votes;
 	}
 
-	public void setObservers(List<User> observers) {
-		this.observers = observers;
+	public void setVotes(List<SnitchVote> votes) {
+		this.votes = votes;
 	}
 
 	public Category getCategory() {
@@ -229,12 +222,12 @@ public class Snitch {
 
 	@Override
 	public String toString() {
-		return "Snitch [id=" + id + ", address=" + address + ", title=" + title + ", description=" + description
-				+ ", createDate=" + createDate + ", imgUrl=" + imgUrl + ", enabled=" + enabled + ", resolved="
-				+ resolved + ", resolutionDate=" + resolutionDate + ", resolution=" + resolution + ", user=" + user
-				+ ", observers=" + observers + ", category=" + category + ", comments=" + comments + "]";
+		return "Snitch [id=" + id + ", title=" + title + ", description=" + description + ", createDate=" + createDate
+				+ ", imgUrl=" + imgUrl + ", enabled=" + enabled + ", resolved=" + resolved + ", resolutionDate="
+				+ resolutionDate + ", resolution=" + resolution + ", user=" + user + ", address=" + address
+				+ ", category=" + category + "]";
 	}
 
-
-
+	
+	
 }
