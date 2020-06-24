@@ -1,6 +1,9 @@
 package com.skilldistillery.snitchapp.controller;
 
+import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,10 +23,6 @@ public class UserController {
 	@Autowired 
 	private UserService uSvc;
 	
-	@GetMapping("ping")
-	public String ping() {
-		return "pong"; 
-	}
 	
 	//Get all
 	@GetMapping("users")
@@ -34,19 +33,28 @@ public class UserController {
 	
 	
 	
-	//GetByIdAndUserName
 	
-	@GetMapping("users/{uId}/profile")
-	public User findByIdAndUsername(@PathVariable Integer uId, @PathVariable String username) {
-		return null;
+	@GetMapping("users/{uId}")
+	public User findById(@PathVariable("uId") Integer uId, HttpServletResponse response) {
+		
+		try {
+			User user = uSvc.findById(uId);
+			if(user==null) {
+				response.setStatus(404);
+			}
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setStatus(400);
+			return null;
+		}
 		
 	}
 	
-	//GetById
 	
 	
 	
-	//PostProfile
+	//PutProfile
 	
 	
 	
