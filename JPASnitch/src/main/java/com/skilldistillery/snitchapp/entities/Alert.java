@@ -35,7 +35,7 @@ public class Alert {
 	
 	@ManyToOne
 	@JoinColumn (name= "category_id")
-	private Category cagtegory;
+	private Category category;
 	
 	// method
 	
@@ -43,11 +43,11 @@ public class Alert {
 		super();
 	}
 
-	public Alert(int id, Category cagtegory, String subject, String content, LocalDateTime createdAt, Boolean expired,
+	public Alert(int id, Category category, String subject, String content, LocalDateTime createdAt, Boolean expired,
 			User user) {
 		super();
 		this.id = id;
-		this.cagtegory = cagtegory;
+		this.category = category;
 		this.subject = subject;
 		this.content = content;
 		this.createdAt = createdAt;
@@ -63,13 +63,7 @@ public class Alert {
 		this.id = id;
 	}
 
-	public Category getCagtegory() {
-		return cagtegory;
-	}
-
-	public void setCagtegory(Category cagtegory) {
-		this.cagtegory = cagtegory;
-	}
+	
 
 	public String getSubject() {
 		return subject;
@@ -135,8 +129,16 @@ public class Alert {
 
 	@Override
 	public String toString() {
-		return "Alert [id=" + id + ", cagtegory=" + cagtegory + ", subject=" + subject + ", content=" + content
+		return "Alert [id=" + id + ", category=" + category + ", subject=" + subject + ", content=" + content
 				+ ", createdAt=" + createdAt + ", expired=" + expired + ", user=" + user + "]";
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	
