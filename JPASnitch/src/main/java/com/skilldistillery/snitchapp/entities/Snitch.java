@@ -47,7 +47,7 @@ public class Snitch {
 	private User user;
 	
 	@OneToMany (mappedBy = "snitch")
-	private List <SnitchVote> votes;
+	private List <SnitchVoteTest> votes;
 	
 	@ManyToOne
 	@JoinColumn (name= "address_id")
@@ -68,7 +68,7 @@ public class Snitch {
 
 	public Snitch(int id, Address address, String title, String description, LocalDateTime createDate, String imgUrl,
 			Boolean enabled, Boolean resolved, LocalDateTime resolutionDate, String resolution, User user,
-			List<SnitchVote> votes, Category category, List<Comment> comments) {
+			List<SnitchVoteTest> votes, Category category, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -174,11 +174,11 @@ public class Snitch {
 		this.user = user;
 	}
 
-	public List<SnitchVote> getVotes() {
+	public List<SnitchVoteTest> getVotes() {
 		return votes;
 	}
 
-	public void setVotes(List<SnitchVote> votes) {
+	public void setVotes(List<SnitchVoteTest> votes) {
 		this.votes = votes;
 	}
 

@@ -1,6 +1,8 @@
 package com.skilldistillery.snitchapp.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -65,7 +67,7 @@ class AddressTest {
 	void testAlertSnitch() {
 		assertNotNull(address);
 		assertNotNull(address.getSnitches());
-		assertTrue(address.getSnitches.size() > 0);
+		assertTrue(address.getSnitches().size() > 0);
 	}
 	
 

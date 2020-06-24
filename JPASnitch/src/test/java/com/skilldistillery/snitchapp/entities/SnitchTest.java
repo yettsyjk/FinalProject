@@ -57,7 +57,7 @@ class SnitchTest {
 	@DisplayName("testing Snitch ")
 	void testSnitchFields() {
 		assertEquals("Angry Yetis on Main St", snitch.getTitle());
-		assertEquals("There is a wild animal prowling around downtown, yelling System.exit() at everyone", snitch.getDescription);
+		assertEquals("There is a wild animal prowling around downtown, yelling System.exit() at everyone", snitch.getDescription());
 	}
 	
 	

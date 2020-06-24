@@ -131,7 +131,7 @@ public class SnitchVote {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SnitchVote other = (SnitchVote) obj;
+		SnitchVoteTest other = (SnitchVoteTest) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

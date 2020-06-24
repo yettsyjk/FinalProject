@@ -14,7 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class SnitchVote {
+class SnitchVoteTest {
 	private static  EntityManagerFactory emf;
 	private static EntityManager em;
 	
@@ -36,7 +36,7 @@ class SnitchVote {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		
-		SnitchVote sid = new SnitchVote();
+		SnitchVoteId sid = new SnitchVoteId();
 		sid.setUserId(2);
 		sid.setSnitchId(1);
 		snitchVote = em.find(SnitchVote.class, sid);
@@ -51,7 +51,7 @@ class SnitchVote {
 	@DisplayName("SnitchVote test verify not null")
 	void testSnitchVoter() {
 //		assertNotNull(snitchVote);
-		assertEquals(0, snitchVote.getNote().size());
+		assertEquals("0", snitchVote.getNote());
 	}//is null expect red
 	
 	

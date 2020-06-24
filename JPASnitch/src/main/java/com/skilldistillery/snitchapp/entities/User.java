@@ -59,7 +59,7 @@ public class User {
 	// join on table snitch_vote
 	
 	@OneToMany (mappedBy = "user")
-	private List <SnitchVote> votes;
+	private List <SnitchVoteTest> votes;
 	
 	@OneToMany (mappedBy ="user")
 	private List <Comment> comments;
@@ -73,7 +73,7 @@ public class User {
 
 	public User(int id, String username, String email, String password, String firstName, String lastName,
 			Boolean enabled, String pictureUrl, LocalDateTime createDate, Role role, List<Alert> alerts,
-			List<Snitch> snitchesCreated, List<SnitchVote> votes, List<Comment> comments) {
+			List<Snitch> snitchesCreated, List<SnitchVoteTest> votes, List<Comment> comments) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -187,11 +187,11 @@ public class User {
 		this.snitchesCreated = snitchesCreated;
 	}
 
-	public List<SnitchVote> getVotes() {
+	public List<SnitchVoteTest> getVotes() {
 		return votes;
 	}
 
-	public void setVotes(List<SnitchVote> votes) {
+	public void setVotes(List<SnitchVoteTest> votes) {
 		this.votes = votes;
 	}
 
