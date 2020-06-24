@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class User {
 	@Id
@@ -35,12 +37,15 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List <Alert> alerts;
 	// relationship between User observer and Snitches(user creates snitches)
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List <Snitch> snitchesCreated;
 	// relationship between Users and Snitches(users voting on snitches)
 	// join on table snitch_vote
+	@JsonIgnore
 	@OneToMany (mappedBy = "user")
 	private List <SnitchVote> votes;
+	@JsonIgnore
 	@OneToMany (mappedBy ="user")
 	private List <Comment> comments;
 	//methods
