@@ -19,6 +19,9 @@ public class SnitchServiceImpl implements SnitchService {
 	
 	@Autowired
 	private UserRepository uRepo;
+	
+	
+	
 
 	@Override
 	public List<Snitch> index(String username) { 
@@ -83,11 +86,26 @@ public class SnitchServiceImpl implements SnitchService {
 		}
 	}
 
-	
-	
-	
-	
-	
-	
+	@Override
+	public List<Snitch> findByTitleLikeOrDescriptionLikeOrAddressStreetLike(String keyword) {
+		if(keyword != null) {
+		keyword = "%"+keyword+"%";
+		
+		return sRepo.findByTitleLikeOrDescriptionLikeOrAddressStreetLikeOrAddressPinNameLike(keyword, keyword, keyword, keyword);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public List<Snitch> findByCategory_NameLike(String keyword) {
+		if(keyword != null) {
+			keyword = "%"+keyword+"%";
+			
+			return sRepo.findByCategory_NameLike(keyword);
+			} else {
+				return null;
+			}
+	}
 		
 }
