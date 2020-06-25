@@ -15,6 +15,7 @@ import com.skilldistillery.snitchapp.entities.User;
 import com.skilldistillery.snitchapp.services.AuthService;
 
 @RestController
+
 @CrossOrigin({ "*", "http://localhost:4210" }) // scripts that come from angular will be authenticated
 public class AuthController {
 	
