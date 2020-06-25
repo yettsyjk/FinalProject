@@ -1,5 +1,7 @@
 package com.skilldistillery.snitchapp.entities;
+
 import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -8,25 +10,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
+
 @Table (name="snitch_vote")
 @Entity
 public class SnitchVote {    
+	
 	@EmbeddedId
 	private SnitchVoteId id;
+	
 	private Boolean vote;
+	
 	@CreationTimestamp
 	@Column (name= "create_time")
 	private LocalDateTime createTime;
+	
 	private String note;
+	
 	@MapsId (value = "userId")
 	@ManyToOne
 	@JoinColumn (name = "user_id")
 	private User user;
+	
 	@MapsId (value = "snitchId")
 	@ManyToOne
 	@JoinColumn (name = "snitch_id")
+	
 	private Snitch snitch;
+	
 	//methods
+	
 	public SnitchVote() {
 		super();
 	}
