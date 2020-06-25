@@ -6,7 +6,7 @@ import com.skilldistillery.snitchapp.entities.Snitch;
 
 public interface SnitchService {
 	
-	List<Snitch> findByTitleLikeOrDescriptionLikeOrPinNameLikeOrStreetLike(String kw1, String kw2, String kw3, String kw4);
+	List<Snitch> findByTitleLikeOrDescriptionLikeOrAddressStreetLike(String keyword);
 	List<Snitch> findByCategory_NameLike(String keyword);
     List<Snitch> index(String username);
     List<Snitch> findAll();

@@ -91,7 +91,7 @@ public class SnitchController {
 		return snitch;
 	}
 
-	@DeleteMapping("snitches/{sId}")
+	@DeleteMapping("snitches/{sId}")//front end has to filter by enabled=true
 	public void disable(@PathVariable Integer sId, HttpServletResponse rs, HttpServletRequest rq) {
 		try {
 			if (snitchSvc.disable(sId)) {
@@ -107,4 +107,21 @@ public class SnitchController {
 			rs.setStatus(400);
 		}
 	}
+	
+	//front end has to filter by enabled=true
+	@GetMapping("snitches/search/keyword/{keyword}")
+	public List<Snitch> findByKeyword(@PathVariable String keyword){
+		
+		
+		return snitchSvc.findByTitleLikeOrDescriptionLikeOrAddressStreetLike(keyword);
+	}
+	
+	//front end has to filter by enabled=true
+	@GetMapping("snitches/search/category/{category}")
+	public List<Snitch> findByCategory(@PathVariable String category){
+		
+		return snitchSvc.findByCategory_NameLike(category);
+	}
+	
+	
 }
