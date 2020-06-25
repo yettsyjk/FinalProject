@@ -133,7 +133,7 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", pinName=" + pinName + ", street=" + street + ", city=" + city + ", state="
-				+ state + ", zip=" + zip + ", snitches=" + snitches + "]";
+				+ state + ", zip=" + zip + "]";
 	}
 
 	

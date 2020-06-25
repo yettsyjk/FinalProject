@@ -23,6 +23,7 @@ public class User {
 	//@Email(message = "Please enter a valid email address")
 	private String email;
 	
+	@JsonIgnore
 	private String password;
 	
 	//@Size (min=2, max=50)
@@ -195,8 +196,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", firstName=" + firstName + ", lastName=" + lastName + ", enabled=" + enabled + ", pictureUrl="
-				+ pictureUrl + ", createDate=" + createDate + ", role=" + role + "]";
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", enabled=" + enabled + ", pictureUrl=" + pictureUrl + ", createDate="
+				+ createDate + ", role=" + role + "]";
 	}
 }
