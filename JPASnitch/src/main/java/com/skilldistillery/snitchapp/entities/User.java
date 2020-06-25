@@ -17,38 +17,56 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String username;
+	
 	//@Email(message = "Please enter a valid email address")
 	private String email;
+	
 	private String password;
+	
 	//@Size (min=2, max=50)
 	@Column (name= "first_name")
+	
 	private String firstName;
+	
 	@Column (name= "last_name")
+	
 	private String lastName;
+	
 	private Boolean enabled;
+	
 	@Column (name= "picture_url")
 	private String pictureUrl;
+	
 	@CreationTimestamp
 	@Column (name= "create_date")
 	private LocalDateTime createDate;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List <Alert> alerts;
+	
 	// relationship between User observer and Snitches(user creates snitches)
 	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List <Snitch> snitchesCreated;
 	// relationship between Users and Snitches(users voting on snitches)
 	// join on table snitch_vote
+	
 	@JsonIgnore
 	@OneToMany (mappedBy = "user")
 	private List <SnitchVote> votes;
+	
 	@JsonIgnore
 	@OneToMany (mappedBy ="user")
 	private List <Comment> comments;
+	
 	//methods
+	
 	public User() {
 		super();
 	}

@@ -12,35 +12,55 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Snitch {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String title;
+	
 	private String description;
+	
 	@CreationTimestamp
 	@Column(name = "create_date")
+	
 	private LocalDateTime createDate;
+	
 	@Column(name = "img_url")
 	private String imgUrl;
+	
 	private Boolean enabled;
+	
 	private Boolean resolved;
+	
 	@Column(name = "resolution_date")
 	private LocalDateTime resolutionDate;
+	
 	private String resolution;
 	// relationship between Snitches and User observer(user creates snitches)
+	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	
 	private User user;
+	
 	@OneToMany(mappedBy = "snitch")
 	private List<SnitchVote> votes;
+	
 	@ManyToOne
 	@JoinColumn(name = "address_id")
+	
 	private Address address;
+	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
+	
 	private Category category;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "snitch")
 	private List<Comment> comments;
 
