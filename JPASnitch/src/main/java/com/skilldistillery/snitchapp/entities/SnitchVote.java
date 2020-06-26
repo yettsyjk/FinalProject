@@ -11,6 +11,8 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Table (name="snitch_vote")
 @Entity
 public class SnitchVote {    
@@ -31,10 +33,10 @@ public class SnitchVote {
 	@JoinColumn (name = "user_id")
 	private User user;
 	
+	@JsonIgnoreProperties({"votes"})
 	@MapsId (value = "snitchId")
 	@ManyToOne
 	@JoinColumn (name = "snitch_id")
-	
 	private Snitch snitch;
 	
 	//methods
@@ -112,7 +114,7 @@ public class SnitchVote {
 	}
 	@Override
 	public String toString() {
-		return "SnitchVote [id=" + id + ", user=" + user + ", snitch=" + snitch + ", vote=" + vote + ", createTime="
+		return "SnitchVote [id=" + id + ", snitch=" + snitch + ", vote=" + vote + ", createTime="
 				+ createTime + ", note=" + note + "]";
 	}
 }
