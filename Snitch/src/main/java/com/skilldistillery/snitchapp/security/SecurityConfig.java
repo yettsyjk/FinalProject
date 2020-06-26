@@ -34,10 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
         .antMatchers(HttpMethod.GET, "/api/snitches").permitAll()
         .antMatchers(HttpMethod.GET, "/api/snitches/search/**").permitAll()
-
+        .antMatchers(HttpMethod.GET, "/api/categories").permitAll()
         .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
         .antMatchers(HttpMethod.DELETE, "/api/snitches").hasRole("ADMIN")//FIXME:Controller Delete methods needs Princpal for this.
         .antMatchers(HttpMethod.GET, "/api/users").hasRole("ADMIN") // For CORS, the preflight request
+        .antMatchers(HttpMethod.POST, "/api/alerts").hasRole("ADMIN") // Only admin can only create alert
+        .antMatchers(HttpMethod.DELETE, "/api/alerts").hasRole("ADMIN") // Only admin can only delete alert
         .anyRequest().permitAll()               // All other requests are allowed without authorization.
         .and()
         .httpBasic();                           // Use HTTP Basic Authentication
