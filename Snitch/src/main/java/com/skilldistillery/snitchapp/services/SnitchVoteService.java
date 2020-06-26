@@ -11,7 +11,7 @@ public interface SnitchVoteService {
 	
 	List<SnitchVote> findBySnitchId(Integer sId);
 	
-	SnitchVote flipVote (Integer snitchId, Integer svId);
+	SnitchVote flipVote (int userId, int snitchId);
 	
 }
 

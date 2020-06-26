@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.snitchapp.entities.SnitchVote;
+import com.skilldistillery.snitchapp.entities.SnitchVoteId;
 import com.skilldistillery.snitchapp.repositories.SnitchRepository;
 import com.skilldistillery.snitchapp.repositories.SnitchVoteRepository;
 
@@ -33,9 +34,16 @@ public class SnitchVoteServiceImpl implements SnitchVoteService {
 	}
 
 	@Override
-	public SnitchVote flipVote(Integer snitchId, Integer svId) {
+	public SnitchVote flipVote(int userId, int snitchId) {
 		// DB has a default value of 1 for true
-		SnitchVote existingVote = svoteRepo.findByIdAndSnitchId(svId, snitchId);
+		SnitchVoteId snitchVoteId= new SnitchVoteId(userId, snitchId);
+		
+		System.out.println(snitchVoteId);
+		
+		SnitchVote existingVote = svoteRepo.findById(snitchVoteId);
+		
+		System.out.println(existingVote);
+		
 		if (existingVote != null) {
 			if (existingVote.getVote() == true) {
 				existingVote.setVote(false);
