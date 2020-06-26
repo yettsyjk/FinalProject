@@ -39,16 +39,23 @@ public class AlertController {
 	}
 
 	@PostMapping("alerts")
-	public Alert create(@RequestBody Alert alert, Principal principal, HttpServletResponse rs, HttpServletRequest rq) {
+	public Alert create(@RequestBody Alert alert,
+			Principal principal, 
+			HttpServletResponse rs, 
+			HttpServletRequest rq) {
 		try {
-			alert = aSvc.createAlert(principal.getName(), alert);
-			if (alert == null) {
-				rs.setStatus(404);
-			} else {
-				rs.setStatus(201);
-				StringBuffer url = rq.getRequestURL();
-				url.append("/").append(alert.getId());
-				rs.setHeader("Location: ", url.toString());
+			
+			User user = uSvc.findUserByUsername(principal.getName());
+			if (user.getRole() == Role.ADMIN) {
+				alert = aSvc.createAlert(principal.getName(), alert);
+				if (alert == null) {
+					rs.setStatus(404);
+				} else {
+					rs.setStatus(201);
+					StringBuffer url = rq.getRequestURL();
+					url.append("/").append(alert.getId());
+					rs.setHeader("Location: ", url.toString());
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
