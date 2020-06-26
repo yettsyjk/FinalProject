@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.snitchapp.entities.Snitch;
 import com.skilldistillery.snitchapp.entities.User;
+import com.skilldistillery.snitchapp.repositories.AddressRepository;
 import com.skilldistillery.snitchapp.repositories.SnitchRepository;
 import com.skilldistillery.snitchapp.repositories.UserRepository;
 
@@ -20,6 +21,8 @@ public class SnitchServiceImpl implements SnitchService {
 	@Autowired
 	private UserRepository uRepo;
 	
+	@Autowired
+	private AddressRepository aRepo;
 	
 	
 
@@ -45,7 +48,9 @@ public class SnitchServiceImpl implements SnitchService {
 	@Override
 	public Snitch create(String username, Snitch snitch) {
 		User user = uRepo.findByUsername(username);
+		
 		if(user != null) {
+			aRepo.saveAndFlush(snitch.getAddress());
 			snitch.setUser(user);
 			sRepo.saveAndFlush(snitch);
 			return snitch;
