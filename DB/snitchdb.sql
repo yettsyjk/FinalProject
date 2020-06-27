@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `enabled` TINYINT NOT NULL DEFAULT 1,
   `picture_url` TEXT NULL,
   `create_date` DATETIME NULL,
-  `usercol` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
@@ -141,7 +140,7 @@ DROP TABLE IF EXISTS `snitch_vote` ;
 CREATE TABLE IF NOT EXISTS `snitch_vote` (
   `user_id` INT NOT NULL,
   `snitch_id` INT NOT NULL,
-  `vote` TINYINT NOT NULL,
+  `vote` TINYINT NOT NULL DEFAULT 1,
   `create_time` DATETIME NULL,
   `note` TEXT NULL,
   PRIMARY KEY (`user_id`, `snitch_id`),
@@ -204,9 +203,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `snitchdb`;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`, `usercol`) VALUES (1, 'admin', 'admin@admin.com', '$2a$10$q5lOwLLyWMHyQc5muboyiO.UAtfnq1i63GiEjRTwb/qqmA1VmAAZS', NULL, NULL, 'ADMIN', 1, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`, `usercol`) VALUES (2, 'user', 'u@u.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, 'USER', 1, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`, `usercol`) VALUES (3, 'user2', 'u2@u2.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, 'USER', 1, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (1, 'admin', 'admin@admin.com', '$2a$10$q5lOwLLyWMHyQc5muboyiO.UAtfnq1i63GiEjRTwb/qqmA1VmAAZS', NULL, NULL, 'ADMIN', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (2, 'user', 'u@u.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, 'USER', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (3, 'user2', 'u2@u2.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, 'USER', 1, NULL, NULL);
 
 COMMIT;
 
@@ -249,6 +248,17 @@ COMMIT;
 START TRANSACTION;
 USE `snitchdb`;
 INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (1, 1, 3, 'Ya\'ll crazy!!!', '2020-05-05 11:22:22');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `snitch_vote`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `snitchdb`;
+INSERT INTO `snitch_vote` (`user_id`, `snitch_id`, `vote`, `create_time`, `note`) VALUES (2, 1, 1, '2020-04-05 10:22:10', 'I like this!');
+INSERT INTO `snitch_vote` (`user_id`, `snitch_id`, `vote`, `create_time`, `note`) VALUES (3, 1, 1, '2020-04-05 10:22:20', 'ehh.....');
 
 COMMIT;
 
