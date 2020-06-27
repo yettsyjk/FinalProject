@@ -38,11 +38,11 @@ public class SnitchVoteServiceImpl implements SnitchVoteService {
 		// DB has a default value of 1 for true
 		SnitchVoteId snitchVoteId= new SnitchVoteId(userId, snitchId);
 		
-		System.out.println(snitchVoteId);
+		//System.out.println(snitchVoteId);
 		
 		SnitchVote existingVote = svoteRepo.findById(snitchVoteId);
 		
-		System.out.println(existingVote);
+		//System.out.println(existingVote);
 		
 		if (existingVote != null) {
 			if (existingVote.getVote() == true) {
@@ -56,3 +56,9 @@ public class SnitchVoteServiceImpl implements SnitchVoteService {
 	}
 
 }
+
+// fliupVote does not create a vote, only changes it (F to T, T to F)
+// shows in DB
+// create method w/ POST mapping to create a vote
+// existing method will be changed to "PUT"
+// add auth. so user can only create and flip own vote
