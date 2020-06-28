@@ -14,6 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertComponent } from './components/alert/alert.component';
+import { AlertListComponent } from './components/alert-list/alert-list.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LogoutComponent,
     NavbarComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    AlertComponent,
+    AlertListComponent,
+    FooterComponent
 
   ],
   imports: [
