@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './components/alert/alert.component';
 import { AlertListComponent } from './components/alert-list/alert-list.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     AlertComponent,
     AlertListComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent
 
   ],
   imports: [
