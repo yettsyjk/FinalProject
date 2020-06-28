@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LogoutComponent,
     NavbarComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    SnitchListComponent
 
   ],
   imports: [
