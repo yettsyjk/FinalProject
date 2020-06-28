@@ -20,6 +20,7 @@ import { AlertListComponent } from './components/alert-list/alert-list.component
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
+import { AlertService } from './services/alert.service';
 
 
 
@@ -45,7 +46,8 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
     NgbModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

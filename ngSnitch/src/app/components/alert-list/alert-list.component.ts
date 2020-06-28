@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { Alert } from 'src/app/models/alert';
 
 
 @Component({
@@ -46,9 +48,9 @@ export class AlertListComponent implements OnInit {
   }
 
 
-displayAlert(alert: Alert){
-  this.router.navigateByUrl(`/alerts/${alert.id}`);
-}
+// displayAlert(alert: Alert){
+//   this.router.navigateByUrl(`/alerts/${alert.id}`);
+// }
 
 
 

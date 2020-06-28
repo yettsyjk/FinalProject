@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Alert } from '../models/alert';
 
 @Injectable({
   providedIn: 'root'
