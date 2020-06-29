@@ -1,5 +1,5 @@
 <div class="container">
-  <br>  <p class="text-center">Register For a Free Account <a [routerLink]="['/register']">Snitch</a></p>
+  <br>  <p class="text-center">Register For a Free Account on <a [routerLink]="['/register']">Snitch</a></p>
   <hr>
   <div class="card bg-light">
   <article class="card-body mx-auto" style="max-width: 400px;">
@@ -31,26 +31,26 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                    </div>
-                      <input name="pictureUrl" class="form-control" placeholder="Enter Last Name*" type="text" [(ngModel)]="newUser.pictureUrl" required=""/>
+                      <input name="pictureUrl" class="form-control" placeholder="Picture Please*" type="text" [(ngModel)]="newUser.pictureUrl" required=""/>
                       <div class="invalid-feedback">Don't Forget To Add A Picture</div>
                     </div> <!-- form-group// -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
        </div>
-          <input name="email" class="form-control" placeholder="Email address*" type="email" [(ngModel)]="newUser.email" required="" />
+          <input name="email" class="form-control" placeholder="Email Address*" type="email" [(ngModel)]="newUser.email" required="" />
           <div class="invalid-feedback">Email is a Required Field</div>
         </div> <!-- form-group// -->
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-key"></i> </span>
        </div>
-          <input name="password" class="form-control" placeholder="Enter password*" type="password" [(ngModel)]="newUser.password" required="" />
+          <input name="password" class="form-control" placeholder="Enter Password*" type="password" [(ngModel)]="newUser.password" required="" />
       </div> <!-- form-group// -->
 
 
       <div class="form-group">
-          <button (click)="register(newUser)" type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+          <button (click)="register(newUser)" type="submit" class="btn btn-primary btn-block">Create Account</button>
       </div> <!-- form-group// -->
       <p class="text-center">Already Have an account? <a [routerLink]="['/login']">Log In</a> </p>
   </form>

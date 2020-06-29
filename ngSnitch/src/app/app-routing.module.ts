@@ -9,6 +9,7 @@ import { ContactComponent } from './components/contact/contact.component';
 
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
 import { AlertListComponent } from './components/alert-list/alert-list.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   // { path: 'snitches/:id', component: SnitchListComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: '**', component: NotFoundComponent }
 
 
