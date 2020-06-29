@@ -18,6 +18,7 @@ export class SnitchListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.loadAll();
   }
 
 
@@ -41,32 +42,6 @@ export class SnitchListComponent implements OnInit {
 
 
 
-  addSnitch(snitch: Snitch) {
-    this.snitchService.create(snitch).subscribe(
-      snitches=> { //data stream returns from the server
-        this.newSnitch = new Snitch();
-        this.loadAll();
-      },
-      fail => { //when the server responds with an Http status code in the error range
-        console.error('SnitchListComponent.addSnitch()');
-        console.error(fail);
-      }
-    );
-  }
-
-
-  updateSnitch(snitch: Snitch) {
-    this.snitchService.update(snitch).subscribe(
-     updated => {
-     this.loadAll();
-    },
-    failed=> {
-console.error('SnitchListComponent.updateSnitch()');
-console.error(failed);
-    }
-    );
-
-  }
 
   delete(id: number) {
     this.snitchService.disable(id).subscribe(

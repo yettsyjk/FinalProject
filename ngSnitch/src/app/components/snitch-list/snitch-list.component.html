@@ -1,13 +1,13 @@
-<button type="submit" class="btn" (click)="loadAll()">Find snitches</button>
+<!-- <button type="submit" class="btn" (click)="loadAll()">List snitches</button> -->
 
 <div *ngFor="let snitch of snitches">
 <div class="row" >
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{snitch.category}}</h5>
+        <h5 class="card-title">Category: {{snitch.category.name}}</h5>
         <p class="card-text">{{snitch.description}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#" class="btn btn-secondary">Go somewhere</a>
       </div>
     </div>
   </div>

@@ -1,0 +1,72 @@
+<form>
+  <input type = "hidden" name="id" [(ngModel)] = "newSnitch.id">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="Title">Title</label>
+      <input type="text" class="form-control" name="title" [(ngModel)] = "newSnitch.title">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Description">Description</label>
+      <input type="text" class="form-control" name="description" [(ngModel)] = "newSnitch.description">
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label for="ResolutionDate">Resolution Date</label>
+      <input type="date" class="form-control" name="resolutionDate" [(ngModel)] = "newSnitch.description">
+  </div>
+    <div class="form-group col-md-6">
+      <label for="ResolutionNotes">Resolution Notes</label>
+      <input type="text" class="form-control" name="resolution" [(ngModel)] = "newSnitch.description">
+  </div>
+  </div>
+
+  <!-- <div class="form-group"> -->
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="resolved"
+      [(ngModel)]="newSnitch.resolved" (change)="updateSnitch(newSnitch)">
+      <label class="form-check-label" for="gridCheck">
+        Resolved
+      </label>
+    </div>
+  <!-- </div> -->
+
+
+  <label for = "Category">Category</label>
+    <select name="category" class="form-control" name="category" [(ngModel)] = "newSnitch.category.name">
+    <option value="Neighborhood">Neighborhood</option>
+    <option value="Public Works">Public Works</option>
+    <option value="Services">Services</option>
+    </select>
+
+
+  <!-- <div class="form-group">
+    <label for="PinName">Name</label>
+    <input type="text" class="form-control" name="pinName" placeholder="1234 Main St" [(ngModel)] = "newSnitch.address.pinName">
+  </div>
+  <div class="form-group">
+    <label for="Address">Address</label>
+    <input type="text" class="form-control" name="street" placeholder="Apartment, studio, or floor" [(ngModel)] = "newSnitch.address.street">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="City">City</label>
+      <input type="text" class="form-control" name="city" [(ngModel)] = "newSnitch.address.city">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="State">State</label>
+      <input type="text" class="form-control" name="state" [(ngModel)] = "newSnitch.address.state">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Zip">Zip</label>
+      <input type="text" class="form-control" name="zip" [(ngModel)] = "newSnitch.address.zip">
+    </div>
+  </div> -->
+
+
+
+  <button type="submit" class="btn btn-primary" (click)="addSnitch(newSnitch)">Report</button>
+</form>
+

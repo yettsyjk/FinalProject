@@ -21,6 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
 import { AlertService } from './services/alert.service';
+import { SnitchComponent } from './components/snitch/snitch.component';
 
 
 
@@ -36,7 +37,8 @@ import { AlertService } from './services/alert.service';
     AlertListComponent,
     FooterComponent,
     ContactComponent,
-    SnitchListComponent
+    SnitchListComponent,
+    SnitchComponent
   ],
   imports: [
     BrowserModule,
