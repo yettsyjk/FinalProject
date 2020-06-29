@@ -18,27 +18,32 @@ public class Alert {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String subject;
-	
+
 	private String content;
-	
+
 	@CreationTimestamp
-	@Column (name= "created_at")
-	private LocalDateTime createdAt; 
-	
+	@Column(name = "created_at")
+	private LocalDateTime createdAt;
+
 	private Boolean expired;
 
+	@Column(name = "img_url")
+	private String imgUrl;
+
+	private int zipcode;
+
 	@ManyToOne
-	@JoinColumn (name= "user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@ManyToOne
-	@JoinColumn (name= "category_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	// method
-	
+
 	public Alert() {
 		super();
 	}
@@ -55,6 +60,20 @@ public class Alert {
 		this.user = user;
 	}
 
+	public Alert(int id, String subject, String content, LocalDateTime createdAt, Boolean expired, String imgUrl,
+			int zipcode, User user, Category category) {
+		super();
+		this.id = id;
+		this.subject = subject;
+		this.content = content;
+		this.createdAt = createdAt;
+		this.expired = expired;
+		this.imgUrl = imgUrl;
+		this.zipcode = zipcode;
+		this.user = user;
+		this.category = category;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -62,8 +81,6 @@ public class Alert {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
 
 	public String getSubject() {
 		return subject;
@@ -97,12 +114,36 @@ public class Alert {
 		this.expired = expired;
 	}
 
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public int getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
+
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override
@@ -129,18 +170,10 @@ public class Alert {
 
 	@Override
 	public String toString() {
-		return "Alert [id=" + id + ", category=" + category + ", subject=" + subject + ", content=" + content
-				+ ", createdAt=" + createdAt + ", expired=" + expired + ", user=" + user + "]";
+		return "Alert [id=" + id + ", subject=" + subject + ", content=" + content + ", createdAt=" + createdAt
+				+ ", expired=" + expired + ", imgUrl=" + imgUrl + ", zipcode=" + zipcode + ", user=" + user
+				+ ", category=" + category + "]";
 	}
 
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	
 	
 }

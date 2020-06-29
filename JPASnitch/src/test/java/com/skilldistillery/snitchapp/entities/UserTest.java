@@ -69,7 +69,7 @@ class UserTest {
 		assertNotNull(user);
 		assertNotNull(user.getAlerts());
 		assertTrue(user.getAlerts().size() > 0);
-		assertEquals("Alert! meow.", user.getAlerts().get(0).getContent());
+		assertEquals("Slow moving traffic between Monument and Castle rock causing delays in commute.", user.getAlerts().get(0).getContent());
 	}
 	
 	@Test
