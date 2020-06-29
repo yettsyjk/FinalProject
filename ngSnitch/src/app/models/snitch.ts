@@ -1,3 +1,10 @@
+import { User } from './user';
+import { Category } from './category';
+import { SnitchVote } from './snitch-vote';
+import { Address } from './address';
+import { Comment } from './comment';
+
+
 export class Snitch {
   id: number;
   title: string;
@@ -8,7 +15,11 @@ export class Snitch {
   resolved: boolean;
   resolutionDate: string;
   resolution: string;
-
+  user: User;
+  votes: SnitchVote[];
+  address: Address;
+  category: Category;
+  comments: Comment[];
 
   constructor(
     id?: number,
@@ -19,7 +30,12 @@ export class Snitch {
     enabled?: boolean,
     resolved?: boolean,
     resolutionDate?: string,
-    resolution?: string) {
+    resolution?: string,
+    user?: User,
+    votes?: SnitchVote[],
+    address?: Address,
+    category?: Category,
+    comments?: Comment[]) {
 
       this.id = id;
       this.title = title;
@@ -30,5 +46,10 @@ export class Snitch {
       this.resolved = resolved;
       this.resolutionDate = resolutionDate;
       this.resolution = resolution;
+      this.user = user;
+      this.votes =  votes;
+      this.address =  address;
+      this.category =  category;
+      this.comments =  comments;
+    }
   }
-}

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.snitchapp.entities.User;
 import com.skilldistillery.snitchapp.services.AuthService;
+import com.skilldistillery.snitchapp.services.UserService;
 
 @RestController
 
@@ -22,8 +23,8 @@ public class AuthController {
 	@Autowired
 	private AuthService authSvc;
 	
-	//@Autowired
-	//private UserService uSvc;
+	@Autowired
+	private UserService uSvc;
 
 	@PostMapping("/register") // allows to sign up/create account
 	public User register(
@@ -37,9 +38,9 @@ public class AuthController {
 	}
 
 	@GetMapping("/authenticate")
-	public Principal authenticate(Principal principal) { // checks username and pass
+	public User authenticate(Principal principal) { // checks username and pass
 		
-		// return userService.findByUsername(principal.getName())
-		return principal;
+		 return uSvc.findUserByUsername(principal.getName());
+		//return principal;
 	}
 }
