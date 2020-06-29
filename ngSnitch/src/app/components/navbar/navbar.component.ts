@@ -8,6 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  currentUser = null;
+
+
 
   constructor(
     private authService: AuthService,
@@ -32,18 +35,18 @@ export class NavbarComponent implements OnInit {
   }
 
   // possibly use for filterring navBar view (guest, user, admin)
-  // getLoggedInUser(){
-  //   //authService function called checkLoggedInUser() to subscribe
-  // }
+  getLoggedInUser(){
+    //authService function called checkLoggedInUser() to subscribe
+  this.authService.getUserRole();
+  }
 
 
-  // adminLoggedIn(){
-  //   if (this.loggedIn()) {//getCurrentUserRole
-  //     return this.authService.getUserRole() === 'ADMIN';
-
-  //   }
-  //   return false;
-  // }
+  adminLoggedIn(){
+    if (this.loggedIn()) {
+      return this.authService.getUserRole() === 'ADMIN';
+    }
+    return false;
+  }
 
 
 }

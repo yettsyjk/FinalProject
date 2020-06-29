@@ -23,7 +23,7 @@ public class User {
 	//@Email(message = "Please enter a valid email address")
 	private String email;
 	
-	@JsonIgnore
+	
 	private String password;
 	
 	//@Size (min=2, max=50)
