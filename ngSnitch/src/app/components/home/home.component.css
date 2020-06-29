@@ -1,3 +1,4 @@
+
 .accordion {
   display: inline;
   height: min-content;
@@ -6,13 +7,14 @@
   justify-content: center;
   align-items: center;
   border-radius:  40px;
+
 }
 
 * {
   box-sizing: border-box;
 }
 .snitchdiv1 {
-  background-image: url("https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_90,w_1400/fl_lossy,pg_1/car2xwj8gadzhtzphget/tekashi-6ix9ine-getty-shareif-ziyadat");
+  background-image: url("https://www.motorcycling.ca/wp-content/uploads/2017/04/PotholeBanner.jpg");
   min-height: 300px;
   /* Center and scale the image nicely */
   background-position: center;
@@ -24,15 +26,18 @@
 }
 
 .snitchdiv2 {
-  background-image: url("https://i.cbc.ca/1.3234779.1442610368!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/the-taking-of-christ.jpg");
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5bc9fe6f65019f017cc040cd/1549393768124-OZ0HKL3G8UQ4J8L9SYYF/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/Construction+inspection+banner.jpg?format=1500whttps://images.squarespace-cdn.com/content/v1/5bc9fe6f65019f017cc040cd/1549393768124-OZ0HKL3G8UQ4J8L9SYYF/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/Construction+inspection+banner.jpg?format=1500w");
   min-height: 300px;
+  background-image: m;
   /* Center and scale the image nicely */
-  background-position: center;
+  background-position: top -220px right 0px;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   border-radius:  20px;
   padding: 20px;
+  margin:0 0 0 5px;
+  transform:scaleX(-1);
 }
 /* Add styles to the form container */
 .container1 {
@@ -49,13 +54,15 @@
 .container2 {
   text-align: center;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
   margin: 50px;
   width: 400px;
   padding: 16px 16px;
   background-color: white;
   border-radius:  20px;
+
+  transform:scaleX(-1);
 }
 
 
@@ -76,3 +83,4 @@
 .btn:hover {
   opacity: 1;
 }
+
