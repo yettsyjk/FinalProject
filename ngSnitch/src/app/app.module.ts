@@ -14,7 +14,14 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+import { AlertListComponent } from './components/alert-list/alert-list.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
+import { AlertService } from './services/alert.service';
+
 
 
 @NgModule({
@@ -26,8 +33,10 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
     NavbarComponent,
     NotFoundComponent,
     LoginComponent,
+    AlertListComponent,
+    FooterComponent,
+    ContactComponent,
     SnitchListComponent
-
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,8 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
     NgbModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

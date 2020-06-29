@@ -1,0 +1,57 @@
+<!--Carousel Wrapper-->
+<div *ngIf="alerts != []">
+    <div id="myCarousel" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Controls-->
+      <div class="controls-top">
+        <a class="btn-floating" data-target="#myCarousel" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+        <a class="btn-floating" data-target="#myCarousel" data-slide="next"><i
+            class="fas fa-chevron-right"></i></a>
+      </div>
+      <!--/.Controls-->
+
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" *ngFor="let x of alerts; let i = index" attr.data-slide-to="{{i}}" [ngClass]="i == 0 ? 'active' : '' "></li>
+      </ol>
+      <!--/.Indicators-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <ngb-carousel [interval]=2000>
+          <ng-template ngbSlide>
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="col-md-4">
+            <div class="card mb-2">
+              <div class="card-header"><p class="card-title text-left">{{title | uppercase}}</p></div>
+              <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1530685932526-48ec92998eaa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                alt="Traffic on highway">
+                <div class="card-body">
+                  <p>TESTING IN THE CARD BODY</p>
+              <!-- <div class="card-body" *ngFor="let alert of alerts" ngClass="alert == 0 ? 'item active' : 'item' "> -->
+              <div class="card-body" *ngFor="let alert of alerts; let k = index" [ngClass]="k == 0 ? 'item active' : 'item' ">
+
+                <!-- <p class="card-title text-left">{{title | uppercase}}</p> -->
+                <!-- <h4 class="card-text text-black">{{alert.subject | titlecase}}</h4>
+                <p class="card-text text-black">{{alert.content }}</p> -->
+                <!-- <div class="card-footer">
+                <button class="btn btn-info" (click)="displayAlert(alert)">Details</button>
+              </div> -->
+            </div>
+          </div>
+            </div>
+
+          </div>
+        <!--/.First slide-->
+      </div>
+      <!--/.Slides-->
+
+
+<!--/.Carousel Wrapper-->
+    </ng-template>
+    </ngb-carousel>
+    </div>
+  </div>
