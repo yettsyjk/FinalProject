@@ -57,8 +57,18 @@ class AlertTest {
 	@DisplayName("mapping Alert content")
 	void testAlert() {
 		assertNotNull(alert);
-		assertEquals("Alert! meow.", alert.getContent() );
+		assertEquals("Construction on I-25", alert.getSubject() );
+		assertEquals("Slow moving traffic between Monument and Castle rock causing delays in commute.", alert.getContent() );
 	}
+	
+	@Test
+	@DisplayName("mapping Alert content img and zipcode entry")
+	void testAlertImgAndZip() {
+		assertNotNull(alert);
+		assertEquals("https://images.unsplash.com/photo-1415594445260-63e18261587e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80", alert.getImgUrl() );
+		assertEquals(80014, alert.getZipcode() );
+	}
+	
 	
 	@Test
 	@DisplayName("mapping Alert to Category")

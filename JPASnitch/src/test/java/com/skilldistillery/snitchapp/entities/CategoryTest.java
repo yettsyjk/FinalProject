@@ -67,7 +67,7 @@ class CategoryTest {
 		assertNotNull(category);
 		assertNotNull(category.getAlerts());
 		assertTrue(category.getAlerts().size() > 0);
-		assertEquals("Alert! meow.", category.getAlerts().get(0).getContent());
+		assertEquals("Slow moving traffic between Monument and Castle rock causing delays in commute.", category.getAlerts().get(0).getContent());
 	}
 
 }
