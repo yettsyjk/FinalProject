@@ -34,13 +34,16 @@ public class AuthController {
 			response.setStatus(400);
 		}
 		user = authSvc.register(user);
+		user.setPassword(null);
 		return user;
+		
 	}
 
 	@GetMapping("/authenticate")
 	public User authenticate(Principal principal) { // checks username and pass
 		
-		 return uSvc.findUserByUsername(principal.getName());
-		//return principal;
+		 User user = uSvc.findUserByUsername(principal.getName());
+		 user.setPassword(null);
+		return user;
 	}
 }

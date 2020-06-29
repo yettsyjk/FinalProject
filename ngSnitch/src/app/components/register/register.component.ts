@@ -11,30 +11,30 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   newUser = new User();
 
-
-
-
   constructor(
     private authService: AuthService,
     private router: Router,
-    // private userService: UserService
+
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     console.log('Register component OnInit');
+    this.router.navigateByUrl('/register');
+
   }
 
 //functions
 register(user: User){
-  this.authService.register(this.newUser).subscribe(
+  console.log(user);
+  this.authService.register(user).subscribe(
     data => {
       console.log(data);
       console.log('RegisterComponent.register(): user registered.');
-      this.authService.login(this.newUser.username, this.newUser.password).subscribe(
+      this.authService.login(user.username, user.password).subscribe(
        loggedIn => {
           this.router.navigateByUrl('/home');
           console.log(loggedIn);
-          console.log(this.newUser.username);
+          console.log(user.username);
           // console.log(this.newUser.password);
           console.log('RegisterComponent.register(): user logged in, routing to /todo.');
 

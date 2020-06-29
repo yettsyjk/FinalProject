@@ -16,8 +16,8 @@ export class AlertListComponent implements OnInit {
   newAlert = null;
 
 
-  alert: Alert[] = [];
-  alerts = [];
+  // alert: Alert[] = [];
+  alerts: Alert[] = [];
 
   alertCategory = [
     'Traffic',
