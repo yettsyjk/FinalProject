@@ -11,7 +11,6 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    // private userService: UserService,
     private router: Router
 
 
@@ -32,6 +31,7 @@ export class NavbarComponent implements OnInit {
     return this.authService.checkLogin();
   }
 
+  // possibly use for filterring navBar view (guest, user, admin)
   // getLoggedInUser(){
   //   //authService function called checkLoggedInUser() to subscribe
   // }
@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
   // adminLoggedIn(){
   //   if (this.loggedIn()) {//getCurrentUserRole
-  //     return this.authService.getCurrentUserProfile() === 'admin';
+  //     return this.authService.getUserRole() === 'ADMIN';
 
   //   }
   //   return false;

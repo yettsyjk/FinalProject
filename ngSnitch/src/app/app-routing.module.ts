@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
+import { AlertListComponent } from './components/alert-list/alert-list.component';
 
 
 
@@ -17,11 +18,8 @@ const routes: Routes = [
   // { path: 'about', component: AboutComponent },
 
   { path: 'contact', component: ContactComponent },
-  // { path: 'snitches', component: SnitchListComponent },
-
-  // { path: 'contact', component: ContactComponent },
   { path: 'snitches', component: SnitchListComponent },
-  // { path: 'alerts', component: AlertListComponent},
+  { path: 'alerts', component: AlertListComponent},
 
   // { path: 'snitches/:id', component: SnitchListComponent },
   { path: 'register', component: RegisterComponent },
