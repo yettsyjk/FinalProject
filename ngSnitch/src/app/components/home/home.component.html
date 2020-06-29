@@ -28,7 +28,10 @@
 
    <p class = "snitch">See an issue? check to see if it has been reported!</p>
 
-    <button type="submit" class="btn">Find snitches</button>
+   <!-- <a [routerLink]="['/snitches']"></a> -->
+
+   <button type="submit" class="btn" [routerLink]="['/snitches']">List snitches</button>
+
   </form>
 </div>
 
@@ -40,7 +43,7 @@
 
    <p class = "snitch">it is important to bring issues to light! Create a snitch here!</p>
 
-    <button type="submit" class="btn">Report a snitch!</button>
+   <button type="submit" class="btn" [routerLink]="['/snitch']">Report a snitch</button>
   </form>
 </div>
 
