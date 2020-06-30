@@ -1,0 +1,28 @@
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 mt-4">
+        <div class="card-header text-center">
+          <h4>PROFILE</h4>
+        </div>
+        <div class="card profile-card" *ngIf="user">
+          <div class ="card-img-block">
+           <img class="card-img-bottom" src={{user.pictureUrl}}></div>
+          <div class="card-title">
+            <h4 class="text-center">{{user.firstName}} {{user.lastName}}</h4><br>
+            <h4 class="text-center">Username:</h4>
+            <h4 class="text-center">{{user.username}}</h4><br>
+            <h4 class="text-center">Snitchin' Since:</h4>
+            <h4 class="text-center">{{user.createDate}}</h4>
+            <button class="btn btn-info">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- modal! -->
+

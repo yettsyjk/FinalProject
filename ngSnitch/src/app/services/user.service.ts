@@ -6,61 +6,65 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private url = 'http://localhost:8090/' + 'api/users';
 
-
-
-  constructor(
-    private http: HttpClient,
-    private authService: AuthService
-  ) { }
-
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   index() {
-   const httpOptions = this.getHttpOptions();
-   return this.http.get<User[]>(this.url, httpOptions).pipe(
-     catchError((err: any) => {
-       console.log(err);
-       return throwError('index in userService');
-     })
-   );
+    const httpOptions = this.getHttpOptions();
+    return this.http.get<User[]>(this.url, httpOptions).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('index in userService');
+      })
+    );
   }
 
-  // displayLoggedInUser(){
-  //     const id = this.authService.checkLogin();
-  //     const httpOptions = this.getHttpOptions();
-  //     console.log(id);
-  //     return this.http.get<User>(`${this.url}/${id}`, httpOptions).pipe(
-  //       catchError((err: any) => {
-  //         console.error(err);
-  //         return throwError('oops');
-  //       })
-  //     );
+  displayLoggedInUser(id){
+      const httpOptions = this.getHttpOptions();
+      // console.log(id);
+      return this.http.get<User>(`${this.url}/${id}`, httpOptions).pipe(
+        catchError((err: any) => {
+          console.error(err);
+          return throwError('display loggedInUser error');
+        })
+      );
 
-  //   }
+    }
 
-  private getHttpOptions(){
+
+  private getHttpOptions() {
     const credentials = this.authService.getCredentials();
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': `Basic ${credentials}`,
-        'X-Requested-With': 'XMLHttpRequest'
-      })
+        Authorization: `Basic ${credentials}`,
+        'X-Requested-With': 'XMLHttpRequest',
+      }),
     };
     return httpOptions;
   }
 
+  updateUser(user: User) {
+    const httpOptions = this.getHttpOptions;
+    if (this.authService.checkLogin()) {
+      return this.http.put<User>(`${this.url}/${user.id}`, httpOptions).pipe(
+        catchError((err: any) => {
+          console.error(err);
+          return throwError('update user');
+        })
+      );
+    }
+  }
 
-
-  disableUser(id: number){
+  disableUser(id: number) {
     const httpOptions = this.getHttpOptions();
-    if (this.authService.checkLogin()){//i need to get the id
-      //if user enabled === true
-      return this.http.delete<User>(`${this.url}/${id}`, httpOptions)
-      .pipe(
+    if (this.authService.checkLogin()) {
+      // i need to get the id
+      // if user enabled === true
+      return this.http.delete<User>(`${this.url}/${id}`, httpOptions).pipe(
         catchError((err: any) => {
           console.error(err);
           return throwError('disable the user');

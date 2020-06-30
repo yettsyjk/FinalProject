@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
               private router: Router,
               private authService: AuthService ) {
     config.closeOthers = true;
-    config.type = 'info'; // changes color of accordion background
+    config.type = ''; // changes color of accordion background
     // config.type.bold=;
   }
 
