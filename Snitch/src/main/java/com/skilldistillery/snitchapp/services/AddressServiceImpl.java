@@ -32,6 +32,9 @@ public class AddressServiceImpl implements AddressService {
 		return adr;
 	}
 
-	
-	
+	@Override
+	public Address create(Address adr) {
+		return 	aRepo.saveAndFlush(adr);
+	}
+
 }

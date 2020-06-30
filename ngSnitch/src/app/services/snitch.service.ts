@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Snitch } from '../models/snitch';
+import { Address } from '../models/address';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class SnitchService {
       })
     };
 
-    return this.http.get<Snitch[]>(this.url, httpOptions).pipe(
+    return this.http.get<Snitch[]>(this.baseUrl + 'api/personalsnitches', httpOptions).pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError('Error retrieving snitches' + err);

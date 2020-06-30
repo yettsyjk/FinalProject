@@ -8,4 +8,6 @@ public interface CategoryService {
 
 	List <Category> findAll();
 	
+	Category findByName(String catName);
+	
 }
