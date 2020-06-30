@@ -3,9 +3,9 @@ import { Snitch } from 'src/app/models/snitch';
 import { SnitchService } from 'src/app/services/snitch.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Category } from 'src/app/models/category';
-import { Address } from 'src/app/models/address';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+// import { Category } from 'src/app/models/category';
+// import { Address } from 'src/app/models/address';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-snitch-list',
@@ -22,8 +22,6 @@ export class SnitchListComponent implements OnInit {
  clicked: boolean = false;
  showAddress: boolean = false;
 
- selectedCategory: Category = new Category();
-  selectedAddress: Address = new Address();
 
   constructor(private snitchService: SnitchService,
     private authService: AuthService,
@@ -32,34 +30,9 @@ export class SnitchListComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    if(!this.checkLogin()){
     this.loadAll();
-    }
-    else{
-      this.index();
-    }
   }
 
-  updateSnitch(snitch, selectedCategory, selectedAddress) {
-
-    snitch.category = selectedCategory;
-    snitch.address = selectedAddress;
-    this.snitchService.update(snitch).subscribe(
-     updated => {
-      this.router.navigateByUrl('/snitches');
-    },
-    failed=> {
-console.error('SnitchListComponent.updateSnitch()');
-console.error(failed);
-    }
-    );
-
-  }
-
-  edit(snitch: Snitch){
-    this.editSnitch = snitch;
-
-  }
 
   address(){
     if(this.showAddress===false){
@@ -73,19 +46,6 @@ console.error(failed);
   checkLogin(){
     return this.authService.checkLogin();
   }
-
-  index(){
-    this.snitchService.index().subscribe(
-      snitches => {
-        this.snitches = snitches;
-      },
-      noGo => {
-        console.error('TodoListComponent.index(): error retrieving snitches');
-        console.error(noGo);
-      }
-    );
-  }
-
 
 
   displaySnitch(snitch): void {
@@ -107,9 +67,6 @@ console.error(failed);
     // this.redirect(); //method called from home
   }
 
-
-
-
   delete(id: number) {
     this.snitchService.disable(id).subscribe(
   snitches => {
@@ -126,25 +83,5 @@ console.error(failed);
 //     this.router.navigate(['snitch-list']);
 // }
 
-//********************************************** */
-
-open(content, snitch) {
-  this.editSnitch = snitch;
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
-  }, (reason) => {
-    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  });
-}
-
-private getDismissReason(reason: any): string {
-  if (reason === ModalDismissReasons.ESC) {
-    return 'by pressing ESC';
-  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-    return 'by clicking on a backdrop';
-  } else {
-    return `with: ${reason}`;
-  }
-}
 
 }
