@@ -11,6 +11,7 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
 import { AlertListComponent } from './components/alert-list/alert-list.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SnitchComponent } from './components/snitch/snitch.component';
+import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   // { path: 'about', component: AboutComponent },
   { path: 'snitch', component: SnitchComponent },
+  { path: 'snitchUpdate', component: SnitchUpdateComponent },
 
   { path: 'contact', component: ContactComponent },
   { path: 'snitches', component: SnitchListComponent },
