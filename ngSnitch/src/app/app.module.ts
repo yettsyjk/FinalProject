@@ -22,6 +22,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
 import { AlertService } from './services/alert.service';
 import { SnitchComponent } from './components/snitch/snitch.component';
+import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.component';
 
 
 
@@ -38,7 +39,8 @@ import { SnitchComponent } from './components/snitch/snitch.component';
     FooterComponent,
     ContactComponent,
     SnitchListComponent,
-    SnitchComponent
+    SnitchComponent,
+    SnitchUpdateComponent
   ],
   imports: [
     BrowserModule,
