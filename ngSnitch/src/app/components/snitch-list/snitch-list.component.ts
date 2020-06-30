@@ -95,10 +95,12 @@ console.error(failed);
   loadAll() { //sets the property snitchess to the response data
     this.snitchService.findAll().subscribe(
       snitches => {
+        console.log(snitches);
+
         this.snitches = snitches;
       },
       noGo => {
-        console.error('TodoListComponent.index(): error retrieving snitches');
+        console.error('SnitchListComponent.index(): error retrieving snitches');
         console.error(noGo);
       }
     );
