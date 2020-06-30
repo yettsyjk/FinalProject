@@ -20,5 +20,15 @@ public class CategoryServiceImpl implements CategoryService {
 	
 		return catRepo.findAll();
 	}
+
+	@Override
+	public Category findByName(String catName) {
+
+		Category foundCategory = catRepo.findByName(catName);
+				
+//		if(foundCategory)
+		
+		return foundCategory;
+	}
 	
 }

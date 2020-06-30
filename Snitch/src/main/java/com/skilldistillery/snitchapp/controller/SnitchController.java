@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.snitchapp.entities.Address;
+import com.skilldistillery.snitchapp.entities.Category;
 import com.skilldistillery.snitchapp.entities.Snitch;
+import com.skilldistillery.snitchapp.services.AddressService;
+import com.skilldistillery.snitchapp.services.CategoryService;
 import com.skilldistillery.snitchapp.services.SnitchService;
 import com.skilldistillery.snitchapp.services.UserService;
 
@@ -31,7 +35,14 @@ public class SnitchController {
 
 	@Autowired
 	public UserService uSvc;
-
+	
+	@Autowired
+	public AddressService addSvc;
+	
+	@Autowired
+	public CategoryService catSvc;
+	
+	
 	@GetMapping("personalsnitches") // for a particular user to find all of their snitches
 	public List<Snitch> index(Principal principal) {
 
@@ -57,6 +68,14 @@ public class SnitchController {
 	public Snitch create(@RequestBody Snitch snitch, Principal principal, HttpServletResponse rs,
 			HttpServletRequest rq) {
 		try {
+			
+			System.out.println(snitch);
+			Address newAddress = snitch.getAddress();
+			newAddress= addSvc.create(newAddress);
+			snitch.setAddress(newAddress);
+			Category newCategory = snitch.getCategory();
+			newCategory = catSvc.findByName(newCategory.getName());
+			snitch.setCategory(newCategory);
 			snitch = snitchSvc.create(principal.getName(), snitch);
 			if (snitch == null) {
 				rs.setStatus(404);
