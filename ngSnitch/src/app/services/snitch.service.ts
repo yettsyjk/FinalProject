@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Snitch } from '../models/snitch';
+import { Address } from '../models/address';
 
 @Injectable({
   providedIn: 'root'

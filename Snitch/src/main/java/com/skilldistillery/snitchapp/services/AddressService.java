@@ -6,4 +6,7 @@ public interface AddressService {
 
 	Address create(String username, Address adr, Integer sId);
 	
+	Address create(Address adr);
+	
+	
 }
