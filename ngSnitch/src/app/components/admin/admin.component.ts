@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Alert } from 'src/app/models/alert';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { Snitch } from 'src/app/models/snitch';
 
 @Component({
   selector: 'app-admin',
@@ -12,12 +14,25 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  comment = new Comment();
+  selectedComment = null;
+  disabledComment = null;
+
+
+  snitch = new Snitch();
+  selectedSnitch = null;
+  disabledSnitch = null;
+
   alert = new Alert();
+  selectedAlert = null;
+  editAlert = null;
+
   selectedUser = null;
   newUser = new User();
   users: User[] = [];
 
   constructor(
+    private alertService: AlertService,
     private authService: AuthService,
     private userService: UserService,
     private snitchService: SnitchService,
@@ -33,6 +48,7 @@ export class AdminComponent implements OnInit {
       loadedUser => {
           this.users = loadedUser;
           console.log('this is the loaded User:' + loadedUser);
+          console.log(loadedUser);
       },
       error => {
           console.error('this is the loaded User error: ' + error);
@@ -53,5 +69,34 @@ export class AdminComponent implements OnInit {
     );
 
   }
+
+
+  // disableAlert(id: number){//I need a disable function from alertService
+  //   this.alertService.disable(id).subscribe(
+  //     alertRemoved => {
+  //       this.selectedAlert =  null;
+  //        console.log(alertRemoved);
+  //     },
+  //     errorRemoveAlert => {
+  //       console.error(errorRemoveAlert);
+  //     }
+  //   );
+  // }
+
+  // disableSnitch(snitchId){
+  //   this.snitchService.disable(snitchId).subscribe(
+  //       snitchesStitches => {
+  //           this.selectedSnitch = snitchesStitches;
+  //           console.log(snitchesStitches);
+  //       },
+  //       myBad => {
+  //         console.error(myBad);
+  //       }
+  //   );
+  // }
+
+  // disableComment(){
+
+  // }
 
 }

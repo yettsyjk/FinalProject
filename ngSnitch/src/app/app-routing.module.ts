@@ -11,11 +11,8 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
 import { AlertListComponent } from './components/alert-list/alert-list.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SnitchComponent } from './components/snitch/snitch.component';
-<<<<<<< HEAD
-import { AdminComponent } from './components/admin/admin.component';
-=======
 import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.component';
->>>>>>> 71c3a767b452c1162c043f3df827dd8ef1101c1c
+import { AdminComponent } from './components/admin/admin.component';
 
 
 

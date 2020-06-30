@@ -23,6 +23,7 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
 import { AlertService } from './services/alert.service';
 import { SnitchComponent } from './components/snitch/snitch.component';
 import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -47,7 +48,8 @@ import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    CommonModule
   ],
   providers: [
     AuthService,

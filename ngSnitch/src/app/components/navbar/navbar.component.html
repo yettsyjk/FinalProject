@@ -1,39 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top pull-right">
   <div class="navbar-nav text-white">
-    <!-- <a *ngIf="verifyLoggedInUser()" class="nav-item nav-link" [routerLink]="['/admin']">ADMIN</a> -->
+    <a *ngIf="adminLoggedIn()" class="nav-item nav-link" [routerLink]="['/admin']">ADMIN</a>
     <a class="navbar-brand" [routerLink]="['/home']"><img src="https://img.icons8.com/color/2x/listening--v2.png" height="50px" alt="logo"/></a>
     <a class="nav-item nav-link" [routerLink]="['/home']">Home</a>
-    <a class="nav-item nav-link" [routerLink]="['/contact']">Contact</a>
+    <a class="nav-item nav-link" [routerLink]="['/contact']">Contact US</a>
     <a *ngIf="checkLogin()" class="nav-item nav-link" [routerLink]="['/snitch']">Snitches</a>
     <a *ngIf="!checkLogin()" class="nav-item nav-link" [routerLink]="['/login']">Login</a>
     <a *ngIf="!checkLogin()" class="nav-item nav-link" [routerLink]="['/register']">Register</a>
-    <a *ngIf="checkLogin()" class="nav-item nav-link" [routerLink]="['/logout']">Logout</a>
+    <a *ngIf="checkLogin()" class="nav-item nav-link" [routerLink]="['/logout']">Logout, {{user.username}}</a>
   </div>
-  <!-- <div *ngIf="!checkLogin()" class="navbar-nav">
-    <a class="nav-item nav-link" [routerLink]="['/login']">Login</a>
-    <a class="nav-item nav-link" [routerLink]="['/register']">Register</a>
-     <a class="nav-item nav-link" [routerLink]="['/todo']">Todos</a>
-     <a class="nav-item nav-link" [routerLink]="['/todo']">Search</a>
-     <a><app-logout></app-logout></a>
-  </div> -->
-  <!-- <div *ngIf="checkLogin()" class="navbar-nav navbar-right">
-     <a class="navbar-brand" [routerLink]="['/home']"><img src="https://img.icons8.com/color/2x/listening--v2.png" height="50px" alt="logo"/></a>
-    <a class="nav-item nav-link" [routerLink]="['/about']">About</a>
-    <a class="nav-item nav-link" [routerLink]="['/contact']">Contact</a>
-    <a class="nav-item nav-link" [routerLink]="['/todo']">Personal Todos</a>
-   <a class="nav-item nav-link" [routerLink]="['/todo']">Search</a>
-    <a class="nav-item nav-link" [routerLink]="['/todo']">Profile</a> for snitch
-    <a><app-logout></app-logout></a>
-  </div> -->
-  <!-- <div *ngIf="adminLoggedIn()" class="navbar-nav navbar-right">
-        <a class="navbar-brand" [routerLink]="['/home']"><img src="https://img.icons8.com/color/2x/listening--v2.png" height="50px" alt="logo"/></a>
-    <a class="nav-item nav-link" [routerLink]="['/about']">About</a>
-    <a class="nav-item nav-link" [routerLink]="['/contact']">Contact</a> -->
-    <!-- <a class="nav-item nav-link" [routerLink]="['/todo']">Todos</a> -->
-    <!-- <a class="nav-item nav-link" [routerLink]="['/todo']">Manage Users</a>
-    <a class="nav-item nav-link" [routerLink]="['/todo']">Manage Alerts</a>
-   <a class="nav-item nav-link" [routerLink]="['/todo']">Search</a>  -->
-     <!-- <a class="nav-item nav-link" [routerLink]="['/todo']">Profile</a> for snitch --> --> -->
-     <!-- <a><app-logout></app-logout></a>
-  </div> -->
+
 </nav>
