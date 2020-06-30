@@ -43,7 +43,10 @@
 
    <p class = "snitch">it is important to bring issues to light! Create a snitch here!</p>
 
-   <button type="submit" class="btn" [routerLink]="['/snitch']">Report a snitch</button>
+   <div *ngIf="!checkLogin()"><button type="button" class="btn" ngbTooltip="Please REGISTER to get full access!" triggers="click:blur">
+    Report a snitch
+  </button></div>
+   <div *ngIf="checkLogin()"><button type="submit" class="btn" [routerLink]="['/snitch']">Report a snitch</button></div>
   </form>
 </div>
 

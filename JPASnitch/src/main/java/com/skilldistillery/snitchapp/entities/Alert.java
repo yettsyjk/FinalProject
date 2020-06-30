@@ -32,7 +32,7 @@ public class Alert {
 	@Column(name = "img_url")
 	private String imgUrl;
 
-	private int zipcode;
+	private Integer zipcode;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -122,11 +122,11 @@ public class Alert {
 		this.imgUrl = imgUrl;
 	}
 
-	public int getZipcode() {
+	public Integer getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(int zipcode) {
+	public void setZipcode(Integer zipcode) {
 		this.zipcode = zipcode;
 	}
 
