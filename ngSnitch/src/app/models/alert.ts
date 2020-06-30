@@ -7,6 +7,8 @@ export class Alert {
   content: string;
   createdAt: string;
   expired: boolean;
+  imgUrl: string;
+  zipcode: number;
   user: User;
   category: Category;
 
@@ -16,6 +18,8 @@ export class Alert {
     content?: string,
     createdAt?: string,
     expired?: boolean,
+    imgUrl?: string,
+    zipcode?: number,
     user?: User,
     category?: Category) {
 
@@ -24,6 +28,8 @@ export class Alert {
       this.content = content;
       this.createdAt = createdAt;
       this.expired = expired;
+      this.imgUrl = imgUrl;
+      this.zipcode = zipcode;
       this.user = user;
       this.category = category;
   }

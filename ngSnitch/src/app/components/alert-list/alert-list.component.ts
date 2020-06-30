@@ -3,19 +3,24 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { Alert } from 'src/app/models/alert';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-alert-list',
   templateUrl: './alert-list.component.html',
-  styleUrls: ['./alert-list.component.css']
+  styleUrls: ['./alert-list.component.css'],
+  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
 export class AlertListComponent implements OnInit {
   title = 'ALERT';
   editAlert = null;
   newAlert = null;
-
-
+  showNavigationArrows = false;
+  showNavigationIndicators = false;
+  images = [1055, 194, 368].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  image = "https://img.icons8.com/pastel-glyph/2x/truck.png";
+  imgUrl = '';
   // alert: Alert[] = [];
   alerts: Alert[] = [];
 
@@ -28,8 +33,12 @@ export class AlertListComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private alertService: AlertService
-  ) { }
+    private alertService: AlertService,
+    config: NgbCarouselConfig
+  ) {
+    config.showNavigationArrows = true;
+    config.showNavigationIndicators = true;
+  }
 
   ngOnInit() {
     this.loadAlert();

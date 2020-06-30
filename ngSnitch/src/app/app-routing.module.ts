@@ -11,13 +11,14 @@ import { SnitchListComponent } from './components/snitch-list/snitch-list.compon
 import { AlertListComponent } from './components/alert-list/alert-list.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SnitchComponent } from './components/snitch/snitch.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  // { path: 'about', component: AboutComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'snitch', component: SnitchComponent },
 
   { path: 'contact', component: ContactComponent },
