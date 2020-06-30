@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,8 +15,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
-
+    private router: Router,
+    private userService: UserService
 
   ) { }
 
@@ -25,6 +26,17 @@ export class NavbarComponent implements OnInit {
   }
 
 
+// verifyLoggedInUser(){
+//   this.userService.displayLoggedInUser(id).subscribe(
+//     data => {
+//       this.currentUser = data;
+//       console.log(data);
+//     },
+//     err => {
+//       console.error('error in verify navbar' + err);
+//     }
+//   );
+// }
 
   loggedIn(){
     return this.authService.checkLogin();
@@ -43,7 +55,7 @@ export class NavbarComponent implements OnInit {
 
   adminLoggedIn(){
     if (this.loggedIn()) {
-      return this.authService.getUserRole() === 'ADMIN';
+      return this.authService.getUserRole() === 'admin';
     }
     return false;
   }

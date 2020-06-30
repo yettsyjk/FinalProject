@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="col-lg-8">
+     <!-- DisplayAll -->
+  <div>
+  <table class="table table-bordered table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <td>ID</td>
+        <td>Username</td>
+        <td>Enable</td>
+        <td>Disable</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" >
+        <td>{{ user.id }}</td>
+        <td>{{ user.username}}</td>
+        <!-- <td><button (click)="enable(user.id)" class="btn btn-danger"></button></td> -->
+        <td><button (click)="disableUser(user.id)" class="btn btn-danger">X</button></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <button class="btn btn-info" (click)="loadUser()">Load Users</button>
+  </div>
+</div>
