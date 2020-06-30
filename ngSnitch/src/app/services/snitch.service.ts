@@ -27,7 +27,7 @@ export class SnitchService {
       })
     };
 
-    return this.http.get<Snitch[]>(this.url, httpOptions).pipe(
+    return this.http.get<Snitch[]>(this.baseUrl + 'api/personalsnitches', httpOptions).pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError('Error retrieving snitches' + err);

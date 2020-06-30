@@ -44,17 +44,6 @@ export class SnitchComponent implements OnInit {
     );
   }
 
-  updateSnitch(snitch: Snitch) {
-    this.snitchService.update(snitch).subscribe(
-     updated => {
-      this.router.navigateByUrl('/snitches');
-    },
-    failed => {
-console.error('SnitchListComponent.updateSnitch()');
-console.error(failed);
-    }
-    );
 
-  }
 
 }
