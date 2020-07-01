@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET, "/api/alerts").permitAll()
         .antMatchers(HttpMethod.POST, "/api/addresses").permitAll()
         .antMatchers(HttpMethod.DELETE, "/api/snitches").hasRole("ADMIN")//FIXME:Controller Delete methods needs Princpal for this.
+ 
         .antMatchers(HttpMethod.GET, "/api/users").hasRole("ADMIN") // For CORS, the preflight request
         .antMatchers(HttpMethod.DELETE, "/api/alerts").hasRole("ADMIN") // Only admin can only delete alert
         .antMatchers(HttpMethod.POST, "/api/alerts").hasRole("ADMIN") // Only admin can only create alert

@@ -12,6 +12,7 @@ public interface UserService {
 	User findUserByUsername(String username);
 	List <User> findAllUsers();
 	Boolean remove(Integer userId);
+	Boolean enable(Integer userId);
 	
 }
 

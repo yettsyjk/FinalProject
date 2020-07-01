@@ -105,6 +105,15 @@ export class SnitchService {
 
       }
 
+      searchByKeyword(keyword){
+        return this.http.get<Snitch[]>(this.url + '/search/keyword/' + `${keyword}`).pipe(
+          catchError((err: any) => {
+            console.log(err);
+            return throwError('error in snitch service findBykeyword method');
+          })
+        );
+      }
+
       disable(id: number){
         const credentials = this.auth.getCredentials();
         const httpOptions = {
@@ -120,7 +129,6 @@ export class SnitchService {
           })
         );
   }
-
 
 
 }

@@ -5,12 +5,14 @@
   <div class="container">
 
 <form class="form-inline">
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button><br><br>
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="keyword"/>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search(keyword)">Search</button><br><br>
 </form>
-</div>
+
+
 
 <div *ngFor="let snitch of snitches">
+  <div *ngIf="snitch.enabled === true">
   <div class="row">
     <div class="col-md-8 offset-md-3 mx-auto">
       <div class="card">
@@ -109,6 +111,8 @@
        </div>
 
     </div><br><br>
+  </div>
+</div>
 </div>
 </div>
 </div>

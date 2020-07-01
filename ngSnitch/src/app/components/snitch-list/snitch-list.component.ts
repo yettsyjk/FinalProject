@@ -25,7 +25,8 @@ export class SnitchListComponent implements OnInit {
  clicked: boolean = false;
  showAddress: boolean = false;
  showComments = null;
-
+ keyword = null;
+ searched: boolean = false;
  comments = [];
   newComment: Comment = new Comment();
 
@@ -82,7 +83,7 @@ export class SnitchListComponent implements OnInit {
     this.snitchService.findAll().subscribe(
       snitches => {
         console.log(snitches);
-snitches.reverse();
+        snitches.reverse();
         this.snitches = snitches;
       },
       noGo => {
@@ -92,6 +93,14 @@ snitches.reverse();
     );
     // this.redirect(); //method called from home
   }
+
+  search(keyword){
+    this.router.navigate(['search/' + keyword]);
+
+    this.keyword = null;
+
+  }
+
 
 
 hideComments(){

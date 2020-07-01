@@ -30,6 +30,7 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { AdminComponent } from './components/admin/admin.component';
 import { CommentService } from './services/comment.service';
 import { SnitchCountPipe } from './pipes/snitch-count.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -51,7 +52,8 @@ import { SnitchCountPipe } from './pipes/snitch-count.pipe';
     SnitchPersonalComponent,
     UserprofileComponent,
     AdminComponent,
-    SnitchCountPipe
+    SnitchCountPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
