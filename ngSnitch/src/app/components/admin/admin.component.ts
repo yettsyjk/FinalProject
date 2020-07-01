@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 import { AuthService } from 'src/app/services/auth.service';
 import { SnitchService } from 'src/app/services/snitch.service';
-import { Router } from '@angular/router';
-import { Alert } from 'src/app/models/alert';
-import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
-import { AlertService } from 'src/app/services/alert.service';
+
 import { Snitch } from 'src/app/models/snitch';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-admin',
@@ -17,30 +18,30 @@ export class AdminComponent implements OnInit {
   comment = new Comment();
   selectedComment = null;
   disabledComment = null;
+  comments: Comment[] = [];
 
 
   snitch = new Snitch();
   selectedSnitch = null;
   disabledSnitch = null;
+  snitches: Snitch[] = [];
 
-  alert = new Alert();
-  selectedAlert = null;
-  editAlert = null;
+
 
   selectedUser = null;
   newUser = new User();
   users: User[] = [];
 
   constructor(
-    private alertService: AlertService,
     private authService: AuthService,
-    private userService: UserService,
     private snitchService: SnitchService,
+    private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loadUser();
+    this.loadSnitch();
   }
 
   loadUser(){
@@ -52,6 +53,20 @@ export class AdminComponent implements OnInit {
       },
       error => {
           console.error('this is the loaded User error: ' + error);
+      }
+    );
+  }
+
+  loadSnitch(){
+    this.snitchService.findAll().subscribe(
+      loadedSnitch => {
+        this.snitches = loadedSnitch;
+        console.log(loadedSnitch);
+        console.log('loading the snitches: ' + loadedSnitch);
+      },
+      wickedSnitch => {
+        console.error(wickedSnitch);
+        console.error('check the loadSnitch we have problems' + wickedSnitch);
       }
     );
   }
@@ -70,33 +85,20 @@ export class AdminComponent implements OnInit {
 
   }
 
-
-  // disableAlert(id: number){//I need a disable function from alertService
-  //   this.alertService.disable(id).subscribe(
-  //     alertRemoved => {
-  //       this.selectedAlert =  null;
-  //        console.log(alertRemoved);
-  //     },
-  //     errorRemoveAlert => {
-  //       console.error(errorRemoveAlert);
-  //     }
-  //   );
-  // }
-
-  disableSnitch(snitchId){
-    this.snitchService.disable(snitchId).subscribe(
+  disableSnitch(id: number){
+    this.snitchService.disable(id).subscribe(
         snitchesStitches => {
-            this.selectedSnitch = snitchesStitches;
-            console.log(snitchesStitches);
+          this.loadSnitch();
+          this.selectedSnitch = null;
+          console.log(snitchesStitches);
         },
         myBad => {
           console.error(myBad);
+          console.log('disbaleSnitch no worky: ' + myBad);
         }
     );
   }
 
-  disableComment(){
 
-  }
 
 }
