@@ -59,7 +59,7 @@ export class NavbarComponent implements OnInit, OnChanges {
 
 
   getLoggedInUser(){
-    this.userService.displayLoggedInUser().subscribe(
+    this.userService.displayLoggedInUserByUsername().subscribe(
       displayTheLoggedInUser => {
         console.log(' displayTheLoggedInUser: ' + displayTheLoggedInUser );
         this.user = displayTheLoggedInUser;

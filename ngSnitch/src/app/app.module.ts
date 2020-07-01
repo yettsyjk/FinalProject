@@ -24,12 +24,10 @@ import { AlertService } from './services/alert.service';
 import { SnitchComponent } from './components/snitch/snitch.component';
 import { SnitchPersonalComponent } from './components/snitch-personal/snitch-personal.component';
 
-import { UserprofileComponent } from './components/userprofile/userprofile.component';
-
 import { UserService } from './services/user.service';
 import { SnitchService } from './services/snitch.service';
-
-
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -47,7 +45,8 @@ import { SnitchService } from './services/snitch.service';
     SnitchListComponent,
     SnitchComponent,
     SnitchPersonalComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
     <a *ngIf="checkLogin()" class="nav-item nav-link" [routerLink]="['/userprofile']">My Profile</a>
     <a *ngIf="!checkLogin()" class="nav-item nav-link" [routerLink]="['/login']">Login</a>
     <a *ngIf="!checkLogin()" class="nav-item nav-link" [routerLink]="['/register']">Register</a>
-    <a *ngIf="checkLogin()" class="nav-item nav-link" [routerLink]="['/logout']">Logout, {{user.username}}</a>
+    <a *ngIf="checkLogin()" class="nav-item nav-link" [routerLink]="['/logout']">Logout {{user.username}}</a>
   </div>
 
 </nav>

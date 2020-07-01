@@ -17,7 +17,7 @@ export class UserService {
   index() {
 
     const httpOptions = this.getHttpOptions();
-    return this.http.get<User[]>(this.url, httpOptions).pipe(
+    return this.http.get<User[]>(this.url + '/', httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError('index in userService');
@@ -25,6 +25,7 @@ export class UserService {
     );
   }
 
+  // + '/'    may be needed after this.url
 
   displayLoggedInUser(id){
       const httpOptions = this.getHttpOptions();
@@ -33,17 +34,11 @@ export class UserService {
         catchError((err: any) => {
           console.error(err);
           return throwError('display loggedInUser error');
+        })
+        );
+      }
 
-   const httpOptions = this.getHttpOptions();
-   return this.http.get<User[]>(this.url + '/', httpOptions).pipe(
-     catchError((err: any) => {
-       console.log(err);
-       return throwError('index in userService');
-     })
-   );
-  }
-
-  displayLoggedInUser(){
+  displayLoggedInUserByUsername(){
 
       const httpOptions = this.getHttpOptions();
       console.log('displayLoggedInUser: ');
