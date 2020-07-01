@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { User } from '../models/user';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { log } from 'util';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class UserService {
       })
     );
   }
+
 
   displayLoggedInUser(id){
       const httpOptions = this.getHttpOptions();
@@ -48,9 +50,10 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    const httpOptions = this.getHttpOptions;
+    console.log(user);
+    const httpOptions = this.getHttpOptions();
     if (this.authService.checkLogin()) {
-      return this.http.put<User>(`${this.url}/${user.id}`, httpOptions).pipe(
+      return this.http.put<User>(`${this.url}/${user.id}`, user, httpOptions).pipe(
         catchError((err: any) => {
           console.error(err);
           return throwError('update user');
