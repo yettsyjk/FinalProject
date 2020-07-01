@@ -15,6 +15,7 @@ export class UserService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   index() {
+
     const httpOptions = this.getHttpOptions();
     return this.http.get<User[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
@@ -32,6 +33,25 @@ export class UserService {
         catchError((err: any) => {
           console.error(err);
           return throwError('display loggedInUser error');
+
+   const httpOptions = this.getHttpOptions();
+   return this.http.get<User[]>(this.url + '/', httpOptions).pipe(
+     catchError((err: any) => {
+       console.log(err);
+       return throwError('index in userService');
+     })
+   );
+  }
+
+  displayLoggedInUser(){
+
+      const httpOptions = this.getHttpOptions();
+      console.log('displayLoggedInUser: ');
+      return this.http.get<User>(`${this.url}/username`, httpOptions).pipe(
+        catchError((err: any) => {
+          console.error(err);
+          return throwError(' displayLoggedInUser oops' + err);
+
         })
       );
 
