@@ -35,23 +35,22 @@ export class UserService {
           console.error(err);
           return throwError('display loggedInUser error');
         })
+        );
+      }
+
+  displayLoggedInUserByUsername(){
+
+      const httpOptions = this.getHttpOptions();
+      console.log('displayLoggedInUser: ');
+      return this.http.get<User>(`${this.url}/username`, httpOptions).pipe(
+        catchError((err: any) => {
+          console.error(err);
+          return throwError(' displayLoggedInUser oops' + err);
+
+        })
       );
-  }
 
-
-  // displayLoggedInUserByUsername(){
-
-  //     const httpOptions = this.getHttpOptions();
-  //     console.log('displayLoggedInUser: ');
-  //     return this.http.get<User>(`${this.url}/username`, httpOptions).pipe(
-  //       catchError((err: any) => {
-  //         console.error(err);
-  //         return throwError(' displayLoggedInUser oops' + err);
-
-  //       })
-  //     );
-
-  //   }
+    }
 
 
   private getHttpOptions() {
