@@ -1,5 +1,6 @@
 package com.skilldistillery.snitchapp.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,9 @@ public class SnitchServiceImpl implements SnitchService {
 	@Override
 	public Snitch update(String username, Integer sId, Snitch snitch) {
 		Snitch managedSnitch =sRepo.findByIdAndUserUsername(sId, username);
+		if( !managedSnitch.getResolved() && snitch.getResolved() ) {
+			snitch.setResolutionDate(LocalDateTime.now());
+		}
 		if(managedSnitch != null) {
 			managedSnitch.setTitle(snitch.getTitle());
 			managedSnitch.setDescription(snitch.getDescription());

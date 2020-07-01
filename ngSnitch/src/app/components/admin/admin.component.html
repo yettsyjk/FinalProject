@@ -1,7 +1,12 @@
 <div class="container-fluid">
+  <!-- <div class="justify-content">
+    <button class="btn btn-info float-center" (click)="loadUser()">Load Users</button>
+    <br>
+  </div> -->
   <div class="col-lg-8">
+
      <!-- DisplayAll -->
-  <div>
+  <div class="container">
   <table class="table table-bordered table-dark">
     <thead class="thead-dark">
       <tr>
@@ -12,8 +17,6 @@
       </tr>
     </thead>
     <tbody>
-      <!-- <tr *ngFor="let user of users" >
-      <tr *ngFor="let user of users"> -->
         <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
         <td>{{ user.username}}</td>
@@ -24,8 +27,35 @@
     </tbody>
     </table>
   </div>
-  <button class="btn btn-info" (click)="loadUser()">Load Users</button>
   </div>
+
+<br>
+<div class="col-lg-8">
+
+  <!-- DisplayAll -->
+<div class="container">
+<table class="table table-bordered table-dark">
+ <thead class="thead-dark">
+   <tr>
+     <th>ID</th>
+     <th>Title</th>
+     <th>Enable</th>
+     <th>Disable</th>
+   </tr>
+ </thead>
+ <tbody>
+     <tr *ngFor="let snitch of snitches">
+     <td>{{ snitch.id }}</td>
+     <td>{{ snitch.title }}</td>
+     <td>{{ snitch.enabled }}</td>
+     <!-- <td><button (click)="enable(user.id)" class="btn btn-danger"></button></td> -->
+     <td><button (click)="disableSnitch(snitch.id)" class="btn btn-danger">X</button></td>
+   </tr>
+ </tbody>
+ </table>
 </div>
+</div>
+</div>
+
 
 
