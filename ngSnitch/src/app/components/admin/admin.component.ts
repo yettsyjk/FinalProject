@@ -83,20 +83,20 @@ export class AdminComponent implements OnInit {
   //   );
   // }
 
-  // disableSnitch(snitchId){
-  //   this.snitchService.disable(snitchId).subscribe(
-  //       snitchesStitches => {
-  //           this.selectedSnitch = snitchesStitches;
-  //           console.log(snitchesStitches);
-  //       },
-  //       myBad => {
-  //         console.error(myBad);
-  //       }
-  //   );
-  // }
+  disableSnitch(snitchId){
+    this.snitchService.disable(snitchId).subscribe(
+        snitchesStitches => {
+            this.selectedSnitch = snitchesStitches;
+            console.log(snitchesStitches);
+        },
+        myBad => {
+          console.error(myBad);
+        }
+    );
+  }
 
-  // disableComment(){
+  disableComment(){
 
-  // }
+  }
 
 }

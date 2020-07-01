@@ -24,6 +24,7 @@ import { AlertService } from './services/alert.service';
 import { SnitchComponent } from './components/snitch/snitch.component';
 import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.component';
 import { CommonModule } from '@angular/common';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
@@ -41,7 +42,8 @@ import { CommonModule } from '@angular/common';
     ContactComponent,
     SnitchListComponent,
     SnitchComponent,
-    SnitchUpdateComponent
+    SnitchUpdateComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
