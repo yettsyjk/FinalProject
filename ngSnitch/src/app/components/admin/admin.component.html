@@ -12,6 +12,7 @@
       <tr>
         <th>ID</th>
         <th>Username</th>
+        <th>Enable Status</th>
         <th>Enable</th>
         <th>Disable</th>
       </tr>
@@ -21,7 +22,7 @@
         <td>{{ user.id }}</td>
         <td>{{ user.username}}</td>
         <td>{{ user.enabled}}</td>
-        <!-- <td><button (click)="enable(user.id)" class="btn btn-danger"></button></td> -->
+        <td><button (click)="enable(user.id)" class="btn btn-warning">Enable</button></td>
         <td><button (click)="disableUser(user.id)" class="btn btn-danger">X</button></td>
       </tr>
     </tbody>

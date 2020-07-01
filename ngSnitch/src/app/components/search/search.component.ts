@@ -18,20 +18,23 @@ export class SearchComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-  //   this.route.paramMap.subscribe(
-  //     params => {
-  //       if (params.get('keyword')) {
-  //         this.keyword = params.get('keyword');
-  //         console.log("Search parameter being used: " + this.keyword);
-  //       }
-  //         this.generalSearch(params.get('keyword'));
-  //       } else if (params.get('category')) {
-  //         this.categorySearch(params.get('category'));
-  //         this.keyword = params.get('category');
-
-  // }
-
-}
+    const keyword = this.route.snapshot.paramMap.get('keyword');
+    this.search(keyword);
   }
 
 
+
+  search(keyword){
+    this.snitchService.searchByKeyword(keyword).subscribe(
+      snitches => {
+        console.log(snitches);
+        this.snitches = snitches;
+      },
+      noGo => {
+        console.error('SearchListComponent.index(): error retrieving snitches');
+        console.error(noGo);
+      }
+    );
+  }
+
+}

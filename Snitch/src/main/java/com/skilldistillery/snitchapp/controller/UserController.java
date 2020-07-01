@@ -82,8 +82,8 @@ public class UserController {
 		}
 	}
 	
-	@PutMapping("users/admin/{uId}")
-	public void enableUser(@PathVariable("uId") Integer uId, HttpServletResponse response, Principal principal) {
+	@GetMapping("users/admin/{uId}")
+	public void enableUser(@PathVariable("uId") Integer uId, HttpServletResponse response) {
 		System.out.println(uId);
 		try {
 			if (uSvc.enable(uId)) {

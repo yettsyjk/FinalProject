@@ -88,4 +88,17 @@ export class UserService {
       );
     }
   }
+  enableUser(uId){
+    console.log(uId);
+    const httpOptions = this.getHttpOptions();
+    if (this.authService.checkLogin()) {
+      return this.http.get<User>(`${this.url}/admin/${uId}`, httpOptions).pipe(
+        catchError((err: any) => {
+          console.error(err);
+          return throwError('enable user');
+        })
+      );
+    }
+  }
+
 }

@@ -14,6 +14,7 @@ import { SnitchComponent } from './components/snitch/snitch.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SnitchPersonalComponent } from './components/snitch-personal/snitch-personal.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -27,8 +28,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'snitches', component: SnitchListComponent },
   { path: 'alerts', component: AlertListComponent},
+  { path: 'search/:keyword', component: SearchComponent},
 
-  // { path: 'snitches/:id', component: SnitchListComponent },
+  // { path: 'search/:keywor', component: SnitchListComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
