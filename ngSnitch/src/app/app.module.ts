@@ -53,7 +53,8 @@ import { SearchComponent } from './components/search/search.component';
     UserprofileComponent,
     AdminComponent,
     SnitchCountPipe,
-    SearchComponent
+    SearchComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -67,7 +68,8 @@ import { SearchComponent } from './components/search/search.component';
     AlertService,
     UserService,
     SnitchService,
-    CommentService
+    CommentService,
+    SnitchCountPipe
 
   ],
   bootstrap: [AppComponent]

@@ -54,3 +54,29 @@ ul, ol {
   visibility: hidden;
   transition: .22s ease;
 } */
+
+
+/* .page-footer {
+  position: sticky;
+  height: 5%;
+   min-height: 40px;
+   left: 0;
+  right: 0;
+   bottom: 0;
+  background: rgb(110, 92, 92);
+  font-size: 9pt;
+  border-top: 2px solid black; */
+
+
+.footer-copyright {
+  background-color: rgb(63, 56, 53);
+  color: brown;
+}
+
+.page-footer {
+  position: sticky;
+  background-color: lightgrey;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 9pt;
+
+}
