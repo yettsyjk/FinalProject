@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, AfterViewInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  currentUser = null;
+export class NavbarComponent implements OnInit, OnChanges {
+
+  user = new User();
 
 
 
@@ -19,10 +21,19 @@ export class NavbarComponent implements OnInit {
     private userService: UserService
 
   ) { }
+  ngOnChanges(): void {
+    if (this.loggedIn()){
+      console.log(this.loggedIn);
+      this.getLoggedInUser();
+    }
+  }
 
   ngOnInit(): void {
     console.log('Navbar OnInit');
-
+    if (this.loggedIn()){
+      console.log(this.loggedIn);
+      this.getLoggedInUser();
+    }
   }
 
 
@@ -46,16 +57,23 @@ export class NavbarComponent implements OnInit {
     return this.authService.checkLogin();
   }
 
-  // possibly use for filterring navBar view (guest, user, admin)
+
   getLoggedInUser(){
-    //authService function called checkLoggedInUser() to subscribe
-  this.authService.getUserRole();
+    this.userService.displayLoggedInUser().subscribe(
+      displayTheLoggedInUser => {
+        console.log(' displayTheLoggedInUser: ' + displayTheLoggedInUser );
+        this.user = displayTheLoggedInUser;
+      },
+      errorDisplayUser => {
+        console.error('errorDisplayUser: ' +  errorDisplayUser);
+      }
+    );
   }
 
 
   adminLoggedIn(){
     if (this.loggedIn()) {
-      return this.authService.getUserRole() === 'admin';
+      return this.authService.getUserRole() === 'ADMIN';
     }
     return false;
   }

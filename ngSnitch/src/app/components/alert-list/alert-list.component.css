@@ -1,0 +1,14 @@
+
+
+/*
+.carousel {
+  width:1500px;
+  height:360px;
+} */
+/* .carousel-inner > .picsum-img-wrapper > img {
+  width:640px;
+  height:360px;
+} */
+.picsum-img-wrapper {
+  image-rendering: 100vh;
+}

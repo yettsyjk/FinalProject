@@ -81,11 +81,14 @@
 <ngb-carousel *ngIf="alerts != []" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
   <ng-template ngbSlide *ngFor="let alert of alerts">
     <div class="picsum-img-wrapper">
-      <img [src]="image" alt="{{alert.subject}}">
+      <!-- <img [src]="image" alt="{{alert.subject}}"> -->
+           <img src="{{ alert.imgUrl }}" height="350px" width="1500px">
     </div>
     <div class="carousel-caption">
-      <h3 class="text-dark text-center"> {{ alert.subject | titlecase }}</h3>
-      <p class="text-dark text-center">{{ alert.content }}</p>
+      <h1 class="text-font"> <b>{{ alert.zipcode }}</b></h1>
+      <h1 class="text-White text-center"> <b>{{ alert.subject | titlecase }}</b></h1>
+      <h4 class="text-White text-center"><b>{{ alert.content }}</b></h4>
+      <h4 class="text-White text-center"><b>{{ alert.createdAt }}</b></h4>
     </div>
   </ng-template>
 </ngb-carousel>
