@@ -17,11 +17,57 @@
             <p>Address: {{snitch.address.street}}, {{snitch.address.city}} {{snitch.address.state}} {{snitch.address.zip}}</p>
             <button type="submit" class="btn btn-secondary" (click)="address()">Hide Location</button>
           </div>
+<div>
+
+
+    <!-- create comment form -->
+<div *ngIf="checkLogin()">
+  <br><form action="/action_page.php">
+    <label for="comment"></label>
+    <textarea id="w3review" name="content" rows="4" cols="50" [(ngModel)] = "newComment.content">
+
+    </textarea>
+    <br><br>
+    <input type="submit" value="Add Comment" (click)="addComment(newComment, snitch.id)">
+    </form>
+</div>
+
+           <!-- display comment -->
+  <!-- <div *ngIf="showComments"> <button type="submit" class="btn btn-secondary" (click)="comments()">Hide Comments</button> </div> -->
+  <div ngbDropdown class="d-inline-block">
+    <div *ngIf="!showComments">
+    <button class="btn btn-secondary" ngbDropdownToggle (click)="loadAllComments(snitch.id)">Show Comments</button>
+  </div>
+    <div *ngIf="showComments">
+    <button class="btn btn-secondary" ngbDropdownToggle (click)="hideComments()">Hide Comments</button>
+  </div>
+
+
+  <!-- <div *ngIf="showComments">
+    <div *ngFor="let comment of commentsList" ngbDropdownMenu aria-labelledby="dropdownForm1">
+      <form class="px-4 py-3">
+        <div class="form-group">
+          <label for="comment.username">{{comment.user.username}}</label>
+          <input type="text" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+          <label for="comment.content">{{comment.content}}</label>
+          <input type="text" class="form-control" disabled>
+        </div>
+      </form>
+      <div class="dropdown-divider"></div>
+
+    </div>
+  </div> -->
+
+
+
+  </div>
+
+</div>
 
           <div *ngIf="!showAddress"> <button type="submit" class="btn btn-secondary" (click)="address()">Show Location</button> </div>
-          <div *ngIf="checkLogin()">
 
-          </div>
         </div>
       </div>
     </div>
