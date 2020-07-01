@@ -1,5 +1,8 @@
 <div class="container-fluid">
-
+<div>
+  <h1 style="text-align: center">Fill out the form below to report your snitch</h1>
+  <h6 style="text-align: center">fields marked with an asterisk (*) are required</h6>
+</div>
 <form>
   <input type = "hidden" name="id" [(ngModel)] = "newSnitch.id">
   <div class="form-row">
@@ -33,6 +36,10 @@
       <label class="form-check-label" for="gridCheck">
         Resolved
       </label>
+    </div><br>
+    <div class="form-group">
+      <label for="imgUrl">Image URL</label>
+      <input type="text" class="form-control" name="imgUrl" placeholder="Image Url" [(ngModel)] = "newSnitch.imgUrl">
     </div>
   <!-- </div> -->
 

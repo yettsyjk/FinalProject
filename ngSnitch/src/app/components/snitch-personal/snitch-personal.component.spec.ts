@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SnitchUpdateComponent } from './snitch-update.component';
+import { SnitchPersonalComponent } from './snitch-personal.component';
 
-describe('SnitchUpdateComponent', () => {
-  let component: SnitchUpdateComponent;
-  let fixture: ComponentFixture<SnitchUpdateComponent>;
+describe('SnitchPersonalComponent', () => {
+  let component: SnitchPersonalComponent;
+  let fixture: ComponentFixture<SnitchPersonalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnitchUpdateComponent ]
+      declarations: [ SnitchPersonalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SnitchUpdateComponent);
+    fixture = TestBed.createComponent(SnitchPersonalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

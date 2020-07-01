@@ -13,7 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AlertListComponent } from './components/alert-list/alert-list.component';
@@ -22,9 +22,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { SnitchListComponent } from './components/snitch-list/snitch-list.component';
 import { AlertService } from './services/alert.service';
 import { SnitchComponent } from './components/snitch/snitch.component';
-import { SnitchUpdateComponent } from './components/snitch-update/snitch-update.component';
-import { CommonModule } from '@angular/common';
-import { AdminComponent } from './components/admin/admin.component';
+import { SnitchPersonalComponent } from './components/snitch-personal/snitch-personal.component';
+import { UserService } from './services/user.service';
+import { SnitchService } from './services/snitch.service';
 
 
 
@@ -42,8 +42,7 @@ import { AdminComponent } from './components/admin/admin.component';
     ContactComponent,
     SnitchListComponent,
     SnitchComponent,
-    SnitchUpdateComponent,
-    AdminComponent
+    SnitchPersonalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +50,13 @@ import { AdminComponent } from './components/admin/admin.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    CommonModule
   ],
   providers: [
     AuthService,
-    AlertService
+    AlertService,
+    UserService,
+    SnitchService
+
   ],
   bootstrap: [AppComponent]
 })
