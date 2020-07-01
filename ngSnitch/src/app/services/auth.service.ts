@@ -38,6 +38,7 @@ private baseUrl = 'http://localhost:8090/';
         tap((res) => {
           localStorage.setItem('credentials' , credentials);
           localStorage.setItem('userRole', res.role);
+          localStorage.setItem('userId', res.id + '');
           return res;
         }),
         catchError((err: any) => {
@@ -61,12 +62,16 @@ private baseUrl = 'http://localhost:8090/';
   logout() {
     localStorage.removeItem('credentials');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('userId');
   }
 
-  getUserRole() : String {
+  getUserRole(): String {
     return localStorage.getItem('userRole');
   }
 
+  getUserId(): string {
+    return localStorage.getItem('userId');
+  }
 
   checkLogin() {
     if (localStorage.getItem('credentials')) {

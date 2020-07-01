@@ -1,14 +1,11 @@
 
 
-/*
-.carousel {
-  width:1500px;
-  height:360px;
-} */
-/* .carousel-inner > .picsum-img-wrapper > img {
-  width:640px;
-  height:360px;
-} */
-.picsum-img-wrapper {
-  image-rendering: 100vh;
+img {
+  display: block;
+ margin-left: auto;
+ margin-right: auto;
+ width: 75%;
+}
+h1,h4 {
+  text-shadow: 2px 2px #503d3e;
 }

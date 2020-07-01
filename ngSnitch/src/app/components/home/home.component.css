@@ -3,6 +3,7 @@
   display: inline;
   height: min-content;
   text-align: center;
+  background-color: #503d3e;
   color: #503d3e;
   justify-content: center;
   align-items: center;
@@ -84,3 +85,7 @@
   opacity: 1;
 }
 
+.first {
+  color: #503d3e;
+  background-color: red;
+}

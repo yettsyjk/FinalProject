@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
 		updatedUser.setFirstName(user.getFirstName());
 		updatedUser.setLastName(user.getLastName());
 		updatedUser.setEmail(user.getEmail());
-		updatedUser.setUsername(user.getUsername());
-		updatedUser.setPassword(user.getPassword());
+//		updatedUser.setUsername(user.getUsername());
+//		updatedUser.setPassword(user.getPassword());
 		return uRepo.saveAndFlush(updatedUser);
 	}
 		return null;

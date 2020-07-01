@@ -13,6 +13,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { SnitchComponent } from './components/snitch/snitch.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SnitchPersonalComponent } from './components/snitch-personal/snitch-personal.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'userprofile', component: UserprofileComponent },
   { path: '**', component: NotFoundComponent }
 
 

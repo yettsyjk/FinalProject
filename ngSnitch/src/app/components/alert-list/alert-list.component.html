@@ -1,94 +1,14 @@
-<!--Carousel Wrapper-->
-<!-- <div *ngIf="alerts == []">tester</div>
-<div *ngIf="alerts != []"> -->
-  <!-- <div
-    id="myCarousel"
-    class="carousel slide carousel-multi-item"
-    data-ride="carousel"
-  > -->
-    <!--Controls-->
-    <!-- <div class="controls-top">
-      <a class="btn-floating" data-target="#myCarousel" data-slide="prev"
-        ><i class="fas fa-chevron-left"></i
-      ></a>
-      <a class="btn-floating" data-target="#myCarousel" data-slide="next"
-        ><i class="fas fa-chevron-right"></i
-      ></a>
-    </div> -->
-    <!--/.Controls-->
 
-    <!--Indicators-->
-    <!-- <ol class="carousel-indicators">
-      <li
-        data-target="#myCarousel"
-        *ngFor="let x of alerts; let i = index"
-        attr.data-slide-to="{{ i }}"
-        [ngClass]="i == 0 ? 'active' : ''"
-      ></li>
-    </ol> -->
-    <!--/.Indicators-->
-
-    <!--Slides-->
-    <!-- <div class="carousel-inner" role="listbox"> -->
-      <!-- <ngb-carousel [interval]="2000">
-        <div> -->
-          <!--*ngFor="let alert of alerts; let k = index" [ngClass]="k == 0 ? 'item active' : 'item' "-->
-          <!-- <ng-template ngbSlide *ngFor="let alert of alerts"> -->
-            <!--First slide-->
-            <!-- <div class="carousel-item active" >this is most likely where the -->
-              <!-- <div class="picsum-img-wrapper">
-                <img [src]="image">
-              </div> -->
-            <!-- <div class="col-md-4"> -->
-            <!-- <div class="card mb-2">
-              <div class="card-header">
-                <p class="card-title text-left">{{ title | uppercase }}</p>
-              </div> -->
-
-              <!-- <div class="card-body"> -->
-              <!-- <p>Length of alerts {{ alerts.length }}</p> -->
-              <!-- <div class="card-body" *ngFor="let alert of alerts" ngClass="alert == 0 ? 'item active' : 'item' "> -->
-              <!-- <div class="card-body"> -->
-                <!-- <img class="card-img-top"
-                src="https://images.unsplash.com/photo-1530685932526-48ec92998eaa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                alt="Traffic on highway">-->
-                <!-- <img [src]="alert.imgUrl" alt="alert in your area"> -->
-                <!-- <p class="card-title text-left">{{title | uppercase}}</p> -->
-                <!-- <h4 class="card-text text-black">
-                  {{ alert.subject | titlecase }}
-                </h4>
-                <p class="card-text text-black">{{ alert.content }}</p>
-                <div class="card-footer">
-                  <h6>Keeping You Posted</h6> -->
-                  <!-- <button class="btn btn-info" (click)="displayAlert(alert)">Details</button> -->
-                <!-- </div>
-              </div>
-            </div> -->
-            <!-- </div>
-
-          </div> -->
-            <!--/.First slide-->
-            <!-- </div> -->
-            <!--/.Slides-->
-
-            <!--/.Carousel Wrapper-->
-          <!-- </ng-template>
-        </div>
-      </ngb-carousel>
-    </div> -->
-  <!-- </div> -->
-<!-- </div> -->
 <ngb-carousel *ngIf="alerts != []" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
   <ng-template ngbSlide *ngFor="let alert of alerts">
     <div class="picsum-img-wrapper">
-      <!-- <img [src]="image" alt="{{alert.subject}}"> -->
-           <img src="{{ alert.imgUrl }}" height="350px" width="1500px">
+           <img src="{{ alert.imgUrl }}" height="400px" width="900"px>
     </div>
-    <div class="carousel-caption">
-      <h1 class="text-font"> <b>{{ alert.zipcode }}</b></h1>
-      <h1 class="text-White text-center"> <b>{{ alert.subject | titlecase }}</b></h1>
-      <h4 class="text-White text-center"><b>{{ alert.content }}</b></h4>
-      <h4 class="text-White text-center"><b>{{ alert.createdAt }}</b></h4>
+    <div class="carousel-caption" >
+      <h1 class="text-White text-right"> <b>{{ alert.zipcode }}</b></h1>
+      <h1 class="text-White text-right"> <b>{{ alert.subject | titlecase }}</b></h1>
+      <h4 class="text-White text-right"> <b>{{ alert.content }}</b></h4>
+      <h4 class="text-White text-right"> <b>{{ alert.createdAt }}</b></h4>
     </div>
   </ng-template>
 </ngb-carousel>
