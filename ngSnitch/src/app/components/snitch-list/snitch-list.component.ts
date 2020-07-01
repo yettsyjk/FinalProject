@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 // import { Address } from 'src/app/models/address';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { CommentService } from 'src/app/services/comment.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-snitch-list',
@@ -36,7 +37,8 @@ export class SnitchListComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private modalService: NgbModal,
-              private commentService: CommentService) { }
+              private commentService: CommentService,
+              private _location: Location) { }
 
   ngOnInit(): void {
     this.loadAll();
@@ -94,11 +96,30 @@ export class SnitchListComponent implements OnInit {
     // this.redirect(); //method called from home
   }
 
+  // search(keyword){
+  //   this.router.navigate(['search/' + keyword]);
+
+  //   this.keyword = null;
+
+  // }
+
   search(keyword){
-    this.router.navigate(['search/' + keyword]);
-
-    this.keyword = null;
-
+    this.searched = true;
+    this.snitchService.searchByKeyword(keyword).subscribe(
+      snitches => {
+        console.log(snitches);
+        this.snitches = snitches;
+      },
+      noGo => {
+        console.error('SearchListComponent.index(): error retrieving snitches');
+        console.error(noGo);
+      }
+    );
+  }
+  backClicked() {
+    //this._location.back();
+    this.loadAll();
+    this.router.navigateByUrl('/snitches');
   }
 
 
