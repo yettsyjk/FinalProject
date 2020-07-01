@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 // import { Category } from 'src/app/models/category';
 // import { Address } from 'src/app/models/address';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
@@ -16,6 +16,7 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class SnitchListComponent implements OnInit {
   closeResult = '';
+  modalReference: any;
 
  snitches: Snitch[] = [];
  newSnitch: Snitch = new Snitch();
@@ -23,9 +24,9 @@ export class SnitchListComponent implements OnInit {
  editSnitch: Snitch = null;
  clicked: boolean = false;
  showAddress: boolean = false;
- showComments: boolean = false;
+ showComments = null;
 
- commentsList: Comment[] = [];
+ comments = [];
   newComment: Comment = new Comment();
 
 
@@ -50,22 +51,23 @@ export class SnitchListComponent implements OnInit {
     this.showAddress = false;
   }
   }
-  comments(){
-    if(this.showComments===false){
-    this.showComments = true;
-  }
-  else{
-    this.showComments = false;
-  }
-  }
 
-  createComment(){
-    this.router.navigateByUrl('/comments');
-  }
+  // comments(){
+  //   if(this.showComments===false){
+  //   this.showComments = true;
+  // }
+  // else{
+  //   this.showComments = false;
+  // }
+  // }
 
-  listComment(){
-    this.router.navigateByUrl('/comments');
-  }
+  // createComment(){
+  //   this.router.navigateByUrl('/comments');
+  // }
+
+  // listComment(){
+  //   this.router.navigateByUrl('/comments');
+  // }
 
   checkLogin(){
     return this.authService.checkLogin();
@@ -80,7 +82,7 @@ export class SnitchListComponent implements OnInit {
     this.snitchService.findAll().subscribe(
       snitches => {
         console.log(snitches);
-
+snitches.reverse();
         this.snitches = snitches;
       },
       noGo => {
@@ -91,35 +93,19 @@ export class SnitchListComponent implements OnInit {
     // this.redirect(); //method called from home
   }
 
-  delete(id: number) {
-    this.snitchService.disable(id).subscribe(
-  snitches => {
-      this.loadAll();
-    },
-    fail => {
-      console.error('SnitchListComponent.deleteSnitch()');
-      console.error(fail);
-    }
-    );
-
-  }
-//   redirect() { //takes to snitch-list html
-//     this.router.navigate(['snitch-list']);
-// }
 
 hideComments(){
-  this.showComments = false;
+  this.showComments = null;
 }
 
 loadAllComments(snitchId) {
-  this.showComments = true;
+  this.showComments = snitchId;
   console.log('snitch ID of: ' + snitchId);
 
   this.commentService.commentsForPost(snitchId).subscribe(
     comments => {
       console.log(comments);
-
-      this.commentsList = comments;
+      this.comments = comments;
     },
     noGo => {
       console.error('SnitchListComponent.index(): error retrieving comments');
@@ -140,6 +126,29 @@ addComment(comment, sId) {
       console.error(fail);
     }
   );
+}
+
+//************  MODAL  */
+
+open(content) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+}
+
+close(){
+  this.modalService.dismissAll();
 }
 
 
