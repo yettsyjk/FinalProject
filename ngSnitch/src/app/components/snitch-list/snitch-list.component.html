@@ -1,77 +1,130 @@
 <!-- <button type="submit" class="btn" (click)="loadAll()">List snitches</button> -->
+
+<div class="container-fluid">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+
+<form class="form-inline">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button><br><br>
+</form>
+</div>
+
 <div *ngFor="let snitch of snitches">
-  <div class="row" >
+  <div class="row">
     <div class="col-md-8 offset-md-3 mx-auto">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Category: {{snitch.category.name}}</h4>
-          <p>Created on: {{snitch.createDate}}</p>
-          <h6>{{snitch.title}} {{snitch.resolved}} {{snitch.resolutionDate}}</h6>
+          <p>Created on: {{snitch.createDate}}  Created by: <em><strong>{{snitch.user.username}}</strong></em></p>
+          <div *ngIf="snitch.resolved == true">
+          <h6> {{snitch.title}} {{snitch.resolved}} {{snitch.resolutionDate}}</h6>
+        </div>
           <p class="card-text">{{snitch.description}}</p>
-          <img class="card-img-bottom" src={{snitch.imgUrl}}>
+          <img class="card-img-bottom" src={{snitch.imgUrl}}><br><br>
 
-          <!-- <input type="hidden" name="enabled" {{snitch.enabled}}>
-          <input type="hidden" name="resolution" {{snitch.resolution}}> -->
+
+
+          <div class="btn-group">
+
+          <div *ngIf="!showComments || showComments != snitch.id">
+            <button type="submit" class="btn btn-secondary" (click)="loadAllComments(snitch.id)">Show Comments</button>
+          </div>
+            <div *ngIf="showComments === snitch.id">
+              <button type="submit" class="btn btn-secondary" (click)="hideComments()">Hide Comments</button>
+            </div>
+
+            <div *ngIf="checkLogin()">
+            <button type="submit"  class="btn btn-secondary" (click)="open(content)">Comment on this Snitch</button>
+            </div>
+
+
+            <div *ngIf="!showAddress"> <button type="submit" class="btn btn-secondary float-right" (click)="address()"> Show   Location </button> </div>
           <div *ngIf="showAddress">
             <h6><em>Name: {{snitch.address.pinName}}</em></h6>
             <p>Address: {{snitch.address.street}}, {{snitch.address.city}} {{snitch.address.state}} {{snitch.address.zip}}</p>
             <button type="submit" class="btn btn-secondary" (click)="address()">Hide Location</button>
           </div>
-<div>
+
+          </div>
+
+          </div>
+
+         <div class="card-footer">
+
+
+          </div>
+
+          <!-- table-bordered table-striped-->
+        </div>
+        <div *ngIf="showComments === snitch.id">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Comments</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let comment of comments">
+                <td>On {{comment.createDate}} <br> <em><strong>{{comment.user.username}}</strong></em> said: </td>
+                <td> <br> " {{comment.content}} "</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+           <!-- modal -->
+
+           <ng-template #content let-modal>
+            <div class="container-fluid">
+              <form>
+                <div class="form-row">
+
+                  <div class="form-group col-md-12">
+                    <label for="comment">Comment Content</label>
+                    <input
+                    type="text"
+                    class="form-control"
+                    name="content"
+                    [(ngModel)]="newComment.content"/>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                <button
+                  type="submit"
+                  class="btn btn-warning"
+                  (click)="addComment(newComment, snitch.id)">
+                  Submit
+                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
+              </div>
+              </form>
+            </div>
+          </ng-template>
+
+           <!-- modal -->
+
+       </div>
+
+    </div><br><br>
+</div>
+</div>
+</div>
+
+<!-- <div> -->
 
 
     <!-- create comment form -->
-<div *ngIf="checkLogin()">
-  <br><form action="/action_page.php">
+<!-- <div *ngIf="checkLogin()"> -->
+  <!-- <br><form action="/action_page.php">
     <label for="comment"></label>
-    <textarea id="w3review" name="content" rows="4" cols="50" [(ngModel)] = "newComment.content">
+    <textarea  name="content" rows="4" cols="50" [(ngModel)] = "newComment.content">
 
-    </textarea>
-    <br><br>
-    <input type="submit" value="Add Comment" (click)="addComment(newComment, snitch.id)">
-    </form>
-</div>
-
-           <!-- display comment -->
-  <!-- <div *ngIf="showComments"> <button type="submit" class="btn btn-secondary" (click)="comments()">Hide Comments</button> </div> -->
-  <div ngbDropdown class="d-inline-block">
-    <div *ngIf="!showComments">
-    <button class="btn btn-secondary" ngbDropdownToggle (click)="loadAllComments(snitch.id)">Show Comments</button>
-  </div>
-    <div *ngIf="showComments">
-    <button class="btn btn-secondary" ngbDropdownToggle (click)="hideComments()">Hide Comments</button>
-  </div>
-
-
-  <!-- <div *ngIf="showComments">
-    <div *ngFor="let comment of commentsList" ngbDropdownMenu aria-labelledby="dropdownForm1">
-      <form class="px-4 py-3">
-        <div class="form-group">
-          <label for="comment.username">{{comment.user.username}}</label>
-          <input type="text" class="form-control" disabled>
-        </div>
-        <div class="form-group">
-          <label for="comment.content">{{comment.content}}</label>
-          <input type="text" class="form-control" disabled>
-        </div>
-      </form>
-      <div class="dropdown-divider"></div>
-
-    </div>
-  </div> -->
-
-
-
-  </div>
-
-</div>
-
-          <div *ngIf="!showAddress"> <button type="submit" class="btn btn-secondary" (click)="address()">Show Location</button> </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+    </textarea><br> -->
+    <!-- <input type="submit" value="Add Comment" (click)="addComment(newComment, snitch.id)"> -->
+    <!-- <button type="submit"  (click)="open(content)">Comment on this Snitch</button> -->
+    <!-- </form> -->
+<!-- </div> -->
 

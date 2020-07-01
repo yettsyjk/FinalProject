@@ -28,6 +28,8 @@ import { UserService } from './services/user.service';
 import { SnitchService } from './services/snitch.service';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CommentService } from './services/comment.service';
+
 
 
 @NgModule({
@@ -59,7 +61,8 @@ import { AdminComponent } from './components/admin/admin.component';
     AuthService,
     AlertService,
     UserService,
-    SnitchService
+    SnitchService,
+    CommentService
 
   ],
   bootstrap: [AppComponent]
