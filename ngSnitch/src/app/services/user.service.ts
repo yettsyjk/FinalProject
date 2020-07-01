@@ -80,8 +80,6 @@ export class UserService {
   disableUser(id: number) {
     const httpOptions = this.getHttpOptions();
     if (this.authService.checkLogin()) {
-      // i need to get the id
-      // if user enabled === true
       return this.http.delete<User>(`${this.url}/${id}`, httpOptions).pipe(
         catchError((err: any) => {
           console.error(err);
