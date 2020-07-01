@@ -5,16 +5,19 @@
   <table class="table table-bordered table-dark">
     <thead class="thead-dark">
       <tr>
-        <td>ID</td>
-        <td>Username</td>
-        <td>Enable</td>
-        <td>Disable</td>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Enable</th>
+        <th>Disable</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users" >
+      <!-- <tr *ngFor="let user of users" >
+      <tr *ngFor="let user of users"> -->
+        <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
         <td>{{ user.username}}</td>
+        <td>{{ user.enabled}}</td>
         <!-- <td><button (click)="enable(user.id)" class="btn btn-danger"></button></td> -->
         <td><button (click)="disableUser(user.id)" class="btn btn-danger">X</button></td>
       </tr>
@@ -24,3 +27,5 @@
   <button class="btn btn-info" (click)="loadUser()">Load Users</button>
   </div>
 </div>
+
+
