@@ -16,9 +16,9 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Category: {{snitch.category.name}}</h4>
-          <p>Created on: {{snitch.createDate}}  Created by: <em><strong>{{snitch.user.username}}</strong></em></p>
+          <p>Snitched On: {{snitch.createDate | date: 'longDate'}}  By: <em><strong>{{snitch.user.username}}</strong></em></p>
           <div *ngIf="snitch.resolved == true">
-          <h6> {{snitch.title}} {{snitch.resolved}} {{snitch.resolutionDate}}</h6>
+          <h6> {{snitch.title}} {{snitch.resolved}} {{snitch.resolutionDate | date: 'longDate'}}</h6>
         </div>
           <p class="card-text">{{snitch.description}}</p>
           <img class="card-img-bottom" src={{snitch.imgUrl}}><br><br>
@@ -67,7 +67,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let comment of comments">
-                <td>On {{comment.createDate}} <br> <em><strong>{{comment.user.username}}</strong></em> said: </td>
+                <td>On {{comment.createDate | date: 'short'}} <br> <em><strong>{{comment.user.username}}</strong></em> said: </td>
                 <td> <br> " {{comment.content}} "</td>
               </tr>
             </tbody>

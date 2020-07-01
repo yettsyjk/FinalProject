@@ -29,6 +29,8 @@ import { SnitchService } from './services/snitch.service';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CommentService } from './services/comment.service';
+import { SnitchCountPipe } from './pipes/snitch-count.pipe';
+
 
 
 
@@ -48,7 +50,8 @@ import { CommentService } from './services/comment.service';
     SnitchComponent,
     SnitchPersonalComponent,
     UserprofileComponent,
-    AdminComponent
+    AdminComponent,
+    SnitchCountPipe
   ],
   imports: [
     BrowserModule,
