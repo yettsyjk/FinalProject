@@ -81,5 +81,24 @@ public class UserController {
 			response.setStatus(400);
 		}
 	}
+	
+	@GetMapping("users/username")
+	public User findUserByUsername(Principal principal,
+			HttpServletResponse response) {
+
+		try {
+			User user = uSvc.findUserByUsername(principal.getName());
+			if (user == null) {
+				response.setStatus(404);
+			}
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setStatus(400);
+			return null;
+		}
+
+	}
+	
 
 }
