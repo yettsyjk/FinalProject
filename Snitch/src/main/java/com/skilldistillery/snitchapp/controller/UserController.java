@@ -82,6 +82,21 @@ public class UserController {
 		}
 	}
 	
+	@PutMapping("users/admin/{uId}")
+	public void enableUser(@PathVariable("uId") Integer uId, HttpServletResponse response, Principal principal) {
+		System.out.println(uId);
+		try {
+			if (uSvc.enable(uId)) {
+				response.setStatus(204);
+			} else {
+				response.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setStatus(400);
+		}
+	}
+	
 	@GetMapping("users/username")
 	public User findUserByUsername(Principal principal,
 			HttpServletResponse response) {

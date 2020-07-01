@@ -59,11 +59,26 @@ public class UserServiceImpl implements UserService {
 		
 		return deleted;
 	}
+	
+	@Override
+	public Boolean enable(Integer userId) {
+		boolean enabled = false;
+		Optional <User> enableUser = uRepo.findById(userId);
+		
+		if(enableUser.isPresent() && enableUser.get().getEnabled() == false) {
+			enableUser.get().setEnabled(true);
+			uRepo.saveAndFlush(enableUser.get());
+			enabled = true;
+		}
+		
+		return enabled;
+	} 
 
 	@Override
 	public User findUserByUsername(String username) {
 	
 		return uRepo.findByUsername(username);
 	}
+	
 
 }
