@@ -104,4 +104,8 @@ console.error(failed);
     }
   }
 
+  close(){
+    this.modalService.dismissAll();
+  }
+
 }
