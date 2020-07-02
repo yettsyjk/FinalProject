@@ -1,0 +1,17 @@
+nav{
+  background-color: #503d3e;
+  position: sticky;
+
+}
+
+#right {
+ text-align: center;
+}
+nav a {
+  display: -ms-flexbox ;
+  width: 350px;
+  font-size: 1.4rem;
+  color: aliceblue;
+  padding: 5px 0;
+}
+
