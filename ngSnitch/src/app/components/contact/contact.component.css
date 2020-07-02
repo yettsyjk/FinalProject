@@ -65,8 +65,8 @@ img {
   background: #fff;
   color: #000;
   padding: 20px 15px;
-  -webkit-box-shadow: 0 5px 10px #00000033;
-          box-shadow: 0 5px 10px #00000033;
+  -webkit-box-shadow: 0 10px 20px #00000033;
+          box-shadow: 0 10px 20px #00000033;
   -webkit-transition: .5s all;
   transition: .5s all;
 }
@@ -77,7 +77,7 @@ img {
           transform: translateX(-50%);
   bottom: 0;
   height: 2px;
-  background: #fc5546;
+  background: #503d3e;
   content: '';
   width: 0;
   position: absolute;
@@ -85,15 +85,15 @@ img {
   transition: .5s all;
 }
 
-.box figure figcaption h5 {
-  font-size: 1.6rem;
+.box figure figcaption h6 {
+  font-size: 1.2rem;
   font-weight: bold;
   -webkit-transition: .3s all;
   transition: .3s all;
 }
 
-.box figure figcaption h3 {
-  font-size: 2.1rem;
+.box figure figcaption h4 {
+  font-size: 1.6rem;
   font-weight: 500;
 }
 
@@ -103,19 +103,19 @@ img {
 }
 
 .box figure:hover h5 {
-  color: #fc5546;
+  color: #503d3e;
 }
 
 .box figure:hover img {
-  -webkit-box-shadow: 0px 0px 6px #0000004f, -10px -10px 1px #f97955;
-          box-shadow: 0px 0px 6px #0000004f, -10px -10px 1px #f97955;
+  -webkit-box-shadow: 0px 0px 10px #0000004f, -10px -10px 4px #503d3e;
+          box-shadow: 0px 0px 10px #0000004f, -10px -10px 4px #503d3e;
 }
 
 .box2 figure:hover figcaption {
   -webkit-transform: translateY(-7px);
           transform: translateY(-7px);
-  -webkit-box-shadow: 0 10px 10px #0000004f;
-          box-shadow: 0 10px 10px #0000004f;
+  -webkit-box-shadow: 0 20px 20px #0000004f;
+          box-shadow: 0 20px 20px #0000004f;
 }
 
 .box figure:hover figcaption::after {

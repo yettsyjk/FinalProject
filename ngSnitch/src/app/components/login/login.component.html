@@ -1,12 +1,23 @@
-<form #user= "ngForm" >
-
-  <div class="form-group">
-    <label for="Username">Username</label>
-    <input type="text" name="username"class="form-control" ngModel>
+<div class="container-fluid">
+<div class="jumbotron">
+  <form #user= "ngForm" >
+    <div class="col-md-6 col-sm-12 mt-4">
+      <div class="alert alert-danger" *ngIf='invalidLogin'>{{errMessage}}</div>
+          <!-- <div class="alert alert-success" *ngIf='invalidLogin'>{{successMessage}}</div> -->
+    <div class="form-group">
+      <h2>Welcome Back. <br/> Login Here to Access Snitches</h2>
+      <label for="Username">Username</label>
+      <input type="text" name="username"class="form-control" placeholder="Enter Username*" required="" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="Password">Password</label>
+      <input type="password" name="password" class="form-control" placeholder="Enter Password*" required="" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="login(user)">Login</button>
   </div>
-  <div class="form-group">
-    <label for="Password">Password</label>
-    <input type="password" name="password" class="form-control" ngModel>
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="login(user)">Submit</button>
-</form>
+  </form>
+  <br/>
+  <p><small>Don't Have an Account?</small></p>
+  <p>Register Free Account  <a [routerLink]="['/register']">Here</a></p>
+</div>
+</div>
