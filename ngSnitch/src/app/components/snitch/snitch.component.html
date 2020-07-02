@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<br><div class="container-fluid">
+  <div class="jumbotron jumbotron-fluid">
 <div>
   <h1 style="text-align: center">Fill out the form below to report your snitch</h1>
   <h6 style="text-align: center">fields marked with an asterisk (*) are required</h6>
@@ -7,16 +8,16 @@
   <input type = "hidden" name="id" [(ngModel)] = "newSnitch.id">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="Title">Title</label>
-      <input type="text" class="form-control" name="title" [(ngModel)] = "newSnitch.title">
+      <label for="Title">Title *</label>
+      <input type="text" class="form-control" name="title" placeholder="Title *"[(ngModel)] = "newSnitch.title">
     </div>
     <div class="form-group col-md-6">
-      <label for="Description">Description</label>
-      <input type="text" class="form-control" name="description" [(ngModel)] = "newSnitch.description">
+      <label for="Description">Description *</label>
+      <input type="text" class="form-control" name="description" placeholder="Description *" [(ngModel)] = "newSnitch.description">
     </div>
   </div>
 
-  <div class="form-row">
+  <!-- <div class="form-row">
 
     <div class="form-group col-md-6">
       <label for="ResolutionDate">Resolution Date</label>
@@ -26,17 +27,17 @@
       <label for="ResolutionNotes">Resolution Notes</label>
       <input type="text" class="form-control" name="resolution" [(ngModel)] = "newSnitch.resolution">
   </div>
-  </div>
+  </div> -->
 
   <!-- <div class="form-group"> -->
-    <div class="form-check">
+    <!-- <div class="form-check">
       <input class="form-check-input" type="checkbox" name="resolved"
-      [(ngModel)]="newSnitch.resolved" >
+      [(ngModel)]="newSnitch.resolved" > -->
       <!-- (change)="updateSnitch(newSnitch)"> -->
-      <label class="form-check-label" for="gridCheck">
+      <!-- <label class="form-check-label" for="gridCheck">
         Resolved
       </label>
-    </div><br>
+    </div><br> -->
     <div class="form-group">
       <label for="imgUrl">Image URL</label>
       <input type="text" class="form-control" name="imgUrl" placeholder="Image Url" [(ngModel)] = "newSnitch.imgUrl">
@@ -63,18 +64,19 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="City">City</label>
-      <input type="text" class="form-control" name="city" [(ngModel)] = "selectedAddress.city">
+      <input type="text" class="form-control" name="city" placeholder="City" [(ngModel)] = "selectedAddress.city">
     </div>
     <div class="form-group col-md-4">
       <label for="State">State</label>
-      <input type="text" class="form-control" name="state" [(ngModel)] = "selectedAddress.state">
+      <input type="text" class="form-control" name="state" placeholder="State" [(ngModel)] = "selectedAddress.state">
     </div>
     <div class="form-group col-md-2">
       <label for="Zip">Zip</label>
-      <input type="text" class="form-control" name="zip" [(ngModel)] = "selectedAddress.zip">
+      <input type="text" class="form-control" name="zip" placeholder="Zip" [(ngModel)] = "selectedAddress.zip">
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" (click)="addSnitch(newSnitch, selectedCategory, selectedAddress)">Report</button>
+  <button type="submit" class="btn btn-secondary btn-lg" (click)="addSnitch(newSnitch, selectedCategory, selectedAddress)">Report</button>
 </form>
+</div>
 </div>

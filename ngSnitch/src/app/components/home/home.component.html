@@ -2,23 +2,35 @@
 <div class="container">
 <p></p> <!-- find a better way to create space between divs besides an empty  -->
 
-<h2 style="text-align: right"> Active Snitches : <span class="badge badge-warning">{{getNumberOfAllSnitches()}}</span></h2>
+<h2 style="text-align: right; color: rgb(75, 49, 43); font-family: Franklin Gothic Medium"> Active Snitches : <span class="badge badge-warning">{{getNumberOfAllSnitches()}}</span></h2>
+<div class="card">
 
+  <div class="card-header">
+    <h1 style="text-align: center;color: rgb(75, 49, 43); font-family: Franklin Gothic Medium">Welcome to Snitch.io</h1>
+  </div>
+</div><br><br>
 
-<ngb-accordion>
-  <ngb-panel title="Welcome to Snitch.gov">
+<div class="card-body">
+  <blockquote class="blockquote mb-0">
+    <p style="text-align: center; font-style: italic; color:rgb(135, 135, 135)">Our purpose is to see, know, care about, and understand our community!<br></p>
+
+  </blockquote>
+</div>
+
+<!-- <ngb-accordion>
+  <ngb-panel title="KEEPING COMMUNITIES SAFE AND INFORMED">
     <ng-template ngbPanelContent>
       The purpose of local is to see, know, care about and understand your community
     </ng-template>
   </ngb-panel>
-</ngb-accordion>
+</ngb-accordion> -->
 
 <a><app-alert-list></app-alert-list></a>
 
-<ngb-accordion>
+<br><ngb-accordion>
   <ngb-panel title="What is a Snitch?" class="first">
     <ng-template ngbPanelContent>
-      A snitch is a report of an issue in your area that you want to raise awareness of
+      <h3 style="font-family: Franklin Gothic Medium">A snitch is a report of an issue in your area that you want to raise awareness of. It provides means of meaningful community participation, consultation and determination of community needs.</h3>
     </ng-template>
   </ngb-panel>
 </ngb-accordion>

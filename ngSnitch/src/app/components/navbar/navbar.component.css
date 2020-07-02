@@ -4,14 +4,12 @@ nav{
 
 }
 
-#right {
- text-align: center;
-}
+
+
 nav a {
   display: -ms-flexbox ;
-  width: 350px;
+  /* width: 350px; */
   font-size: 1.4rem;
   color: aliceblue;
   padding: 5px 0;
 }
-
