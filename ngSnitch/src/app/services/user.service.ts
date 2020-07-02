@@ -5,12 +5,14 @@ import { User } from '../models/user';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { log } from 'util';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private url = 'http://localhost:8090/' + 'api/users';
+  // private url = 'http://localhost:8090/' + 'api/users';
+  private url = environment.baseUrl + 'api/users';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

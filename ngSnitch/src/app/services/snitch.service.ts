@@ -5,13 +5,14 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Snitch } from '../models/snitch';
 import { Address } from '../models/address';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SnitchService {
-  private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'api/snitches';
+  // private baseUrl = 'http://localhost:8090/';
+  private url = environment.baseUrl + 'api/snitches';
 
   constructor(
     private http: HttpClient, // inject to connect to Controller/DB\
@@ -27,7 +28,7 @@ export class SnitchService {
       })
     };
 
-    return this.http.get<Snitch[]>(this.baseUrl + 'api/personalsnitches', httpOptions).pipe(
+    return this.http.get<Snitch[]>(environment.baseUrl + 'api/personalsnitches', httpOptions).pipe(
         catchError((err: any) => {
           console.log(err);
           return throwError('Error retrieving snitches' + err);

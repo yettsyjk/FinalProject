@@ -5,6 +5,7 @@ import { Observable, throwError, BehaviorSubject } from 'rxjs';
 // import { NgForm } from '@angular/forms';
 // import {environment} from 'src/environments/environment';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ import { User } from '../models/user';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-private baseUrl = 'http://localhost:8090/';
-// private baseUrl = environment.baseUrl;
+// private baseUrl = 'http://localhost:8090/';
+private baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();

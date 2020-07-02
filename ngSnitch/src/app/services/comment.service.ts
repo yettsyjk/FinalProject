@@ -3,13 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
+  private url = environment.baseUrl + 'api/snitches';
+
   private baseUrl = 'http://localhost:8090/';
-  private url = this.baseUrl + 'api/snitches';
+  // private url = this.baseUrl + 'api/snitches';
 
   constructor(private http: HttpClient, // inject to connect to Controller/DB\
     private auth: AuthService) { }
