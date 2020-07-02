@@ -50,7 +50,8 @@ public class SnitchServiceImpl implements SnitchService {
 	public Snitch create(String username, Snitch snitch) {
 		User user = uRepo.findByUsername(username);
 		
-		if(user != null) {
+		if(user != null ) {
+			snitch.setEnabled(true);
 			aRepo.saveAndFlush(snitch.getAddress());
 			snitch.setUser(user);
 			sRepo.saveAndFlush(snitch);
