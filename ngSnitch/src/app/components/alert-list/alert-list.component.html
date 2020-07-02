@@ -5,10 +5,10 @@
            <img src="{{ alert.imgUrl }}" height="400px" width="900"px>
     </div>
     <div class="carousel-caption" >
-      <h1 class="text-White text-right"> <b>{{ alert.zipcode }}</b></h1>
+      <h1 class="text-White text-right"> <b>Zip: {{ alert.zipcode }}</b></h1>
       <h1 class="text-White text-right"> <b>{{ alert.subject | titlecase }}</b></h1>
       <h4 class="text-White text-right"> <b>{{ alert.content }}</b></h4>
-      <h4 class="text-White text-right"> <b>{{ alert.createdAt }}</b></h4>
+      <h4 class="text-White text-right"> <b>{{ alert.createdAt | date: 'longDate'}}</b></h4>
     </div>
   </ng-template>
 </ngb-carousel>
