@@ -31,6 +31,15 @@ export class SnitchListComponent implements OnInit {
  comments = [];
   newComment: Comment = new Comment();
 
+  // positionMap() = {
+  // street: snitch.address.street,
+  // city: snitch.address.city,
+  // state: snitch.address.state,
+  // zipcode: snitch.address.zip
+  // };
+
+
+  // mapsURL = `https://maps.google.com/maps?q=${this.positionMap.street}%20${this.positionMap.city}%20%${this.positionMap.zipcode}&t=&z=20&ie=UTF8&iwloc=&output=embed`;
 
   constructor(private snitchService: SnitchService,
     private authService: AuthService,
