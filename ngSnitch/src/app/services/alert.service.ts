@@ -4,12 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Alert } from '../models/alert';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
-private url = 'http://localhost:8090/' + 'api/alerts';
+  private url = environment.baseUrl + 'api/alerts';
+// private url = 'http://localhost:8090/' + 'api/alerts';
 
 
 
