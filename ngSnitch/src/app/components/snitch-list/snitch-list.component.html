@@ -4,14 +4,22 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
 
-<form class="form-inline">
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" aria-label="Search" [(ngModel)]="keyword"/>
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search(keyword)">Search</button><br><br>
-  <div *ngIf="searched">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="backClicked()">Back</button><br><br>
-  </div>
-</form>
+<div class="card text-center">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
 
+      <h1 class="text-align-center"><strong>SEARCH FOR A LOCAL SNITCH</strong></h1>
+      <h6 style="color: rgb(133, 130, 130);"><em>I think it's really important to be conscious of yourself and the world around you. For me, that meant reading a lot and reporting.</em></h6>
+      <footer class="blockquote-footer" ><em>Ta-Nehisi Coates</em><form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="keyword" aria-label="Search" [(ngModel)]="keyword"/>
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search(keyword)">Search</button>
+        <div *ngIf="searched">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="backClicked()">Back</button>
+        </div>
+      </form></footer>
+    </blockquote>
+  </div>
+</div><br><br>
 
 
 <div *ngFor="let snitch of snitches">
@@ -25,7 +33,7 @@
           <div *ngIf="snitch.resolved == true">
           <h6> {{snitch.title}} {{snitch.resolved}} {{snitch.resolutionDate | date: 'longDate'}}</h6>
         </div>
-          <p class="card-text">{{snitch.description}}</p>
+          <p class="card-text"><strong>{{snitch.title}}</strong><br><br>{{snitch.description}}</p>
           <img class="card-img-bottom" src={{snitch.imgUrl}}><br><br>
 
 
@@ -42,6 +50,11 @@
             <div *ngIf="checkLogin()">
             <button type="submit"  class="btn btn-secondary" (click)="open(content)">Comment on this Snitch</button>
             </div>
+
+
+          <div *ngIf="!checkLogin()"><button type="submit" class="btn btn-secondary" ngbTooltip="Please REGISTER/LOGIN to get full access!" triggers="click:blur">
+            Comment on this Snitch
+            </button></div>
 
 
             <div *ngIf="!showAddress"> <button type="submit" class="btn btn-secondary float-right" (click)="address()"> Show   Location </button> </div>
@@ -88,7 +101,7 @@
                 <div class="form-row">
 
                   <div class="form-group col-md-12">
-                    <label for="comment">Comment Content</label>
+                    <label for="comment">Post your comment here...</label>
                     <input
                     type="text"
                     class="form-control"
