@@ -205,9 +205,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `snitchdb`;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (1, 'admin', 'admin@admin.com', '$2a$10$q5lOwLLyWMHyQc5muboyiO.UAtfnq1i63GiEjRTwb/qqmA1VmAAZS', NULL, NULL, 'ADMIN', 1, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (2, 'user', 'u@u.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Bob', 'Dobbs', 'USER', 1, NULL, '2020-05-05 11:22:22');
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (3, 'user2', 'u2@u2.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Rob', 'Cobbs', 'USER', 1, NULL, '2020-05-05 11:22:22');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (1, 'admin', 'admin@admin.com', '$2a$10$q5lOwLLyWMHyQc5muboyiO.UAtfnq1i63GiEjRTwb/qqmA1VmAAZS', 'Clu', 'Program', 'ADMIN', 1, 'https://i.ytimg.com/vi/re68LpxsG1o/maxresdefault.jpg', '2020-05-05 11:22:22');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (2, 'Bob', 'bob@dobbs.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Bob', 'Dobbs', 'USER', 1, 'https://i.pinimg.com/originals/66/45/93/664593bf0230b93a360099ca7b253828.jpg', '2020-05-05 11:22:22');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (3, 'Rafael', 'raf@raf.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Rafael', 'Turtle', 'USER', 1, 'https://www.previewsworld.com/news_images/208038_1191782_1010.jpg', '2020-05-05 11:22:22');
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (4, 'Vince', 'vince@vince.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Vince', 'B', 'USER', 1, 'https://www.vwlawfirm.com/content/uploads/posts/163/vincent-borden-participates-in-military-veterans.jpg', '2020-02-05 11:22:22');
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `enabled`, `picture_url`, `create_date`) VALUES (5, 'Tabatha', 'tab@tab.com', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Tab', 'F', 'USER', 1, 'https://lh4.googleusercontent.com/-LgTtt5APi2Y/AAAAAAAAAAI/AAAAAAAAAEI/BYQNA3tVtCs/photo.jpg', '2020-02-05 11:22:22');
 
@@ -275,6 +275,11 @@ INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) V
 INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (3, 4, 5, 'SAME AS YOU VINCE!!!!! I am interested too!', '2020-06-01 12:02:00');
 INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (4, 6, 5, 'I have seen this pothole! It is really bad!', '2020-06-01 12:05:00');
 INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (5, 6, 4, 'That is super unsafe! We do need to tell the town about this!', '2020-06-01 12:06:00');
+INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (DEFAULT, 2, 1, 'I TOTALLY agree!', '2020-06-02 10:06:00');
+INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (DEFAULT, 3, 2, 'DUDE! Yes! i want to hear more!', '2020-06-03 11:22:00');
+INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (DEFAULT, 5, 3, 'It has been very noisy here too!', '2020-06-04 12:27:00');
+INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (DEFAULT, 7, 4, 'I have not seen it, but I will keep an eye out!', '2020-06-05 12:33:00');
+INSERT INTO `comment` (`id`, `snitch_id`, `user_id`, `content`, `create_date`) VALUES (DEFAULT, 8, 5, 'It keeps all those rebellious skate boarders off the sidewalks!', '2020-06-06 10:44:00');
 
 COMMIT;
 
