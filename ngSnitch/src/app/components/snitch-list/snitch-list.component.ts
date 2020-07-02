@@ -30,7 +30,7 @@ export class SnitchListComponent implements OnInit {
  searched: boolean = false;
  comments = [];
   newComment: Comment = new Comment();
-
+back: boolean = false;
   // positionMap() = {
   // street: snitch.address.street,
   // city: snitch.address.city,
@@ -113,6 +113,7 @@ export class SnitchListComponent implements OnInit {
   // }
 
   search(keyword){
+    this.back = false;
     this.searched = true;
     this.snitchService.searchByKeyword(keyword).subscribe(
       snitches => {
@@ -126,6 +127,7 @@ export class SnitchListComponent implements OnInit {
     );
   }
   backClicked() {
+    this.back = true;
     //this._location.back();
     this.loadAll();
     this.router.navigateByUrl('/snitches');
