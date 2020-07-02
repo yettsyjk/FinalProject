@@ -6,33 +6,36 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  errMessage = 'Password OR Username Incorrect';
+  invalidLogin = false;
+  loginSuccessful = false;
+  successMessage = '';
 
-  constructor(
-    private auth: AuthService,
-    private router: Router
-  ) { }
+  constructor(private auth: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  login(form: NgForm){
+  login(form: NgForm) {
     const loggedUser = form.value;
 
     this.auth.login(loggedUser.username, loggedUser.password).subscribe(
-      logged => {
-            console.log('LoginComponent.login(): user logged in, routing to /todo.');
-            this.router.navigateByUrl('/home');
-          },
-          notLogged => {
-            console.error('LoginComponent.login(): error logging in.');
-          }
-
+      (logged) => {
+        this.invalidLogin = false;
+        // this.loginSuccessful = true;
+        this.successMessage = 'Login Successful';
+        console.log(
+          'LoginComponent.login(): user logged in, routing to /home.' + logged
+        );
+        this.router.navigateByUrl('/home');
+      },
+      (notLogged) => {
+        this.invalidLogin = true;
+        this.loginSuccessful = false;
+        console.error('LoginComponent.login(): error logging in.' + notLogged);
+      }
     );
-
-
   }
-
 }
