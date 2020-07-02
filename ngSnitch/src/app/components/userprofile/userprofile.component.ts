@@ -78,6 +78,9 @@ console.error(failed);
       return `with: ${reason}`;
     }
   }
+  close(){
+    this.modalService.dismissAll();
+  }
 
   getUserId(){
   return this.authService.getUserId();
