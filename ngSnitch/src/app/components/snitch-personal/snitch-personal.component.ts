@@ -45,6 +45,7 @@ export class SnitchPersonalComponent implements OnInit {
   index(){
     this.snitchService.index().subscribe(
       snitches => {
+        snitches.reverse();
         this.snitches = snitches;
       },
       noGo => {

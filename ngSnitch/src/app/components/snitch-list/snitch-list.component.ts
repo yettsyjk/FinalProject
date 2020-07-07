@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Snitch } from 'src/app/models/snitch';
 import { Comment } from 'src/app/models/comment';
 import { SnitchService } from 'src/app/services/snitch.service';
@@ -15,7 +15,7 @@ import {Location} from '@angular/common';
   templateUrl: './snitch-list.component.html',
   styleUrls: ['./snitch-list.component.css']
 })
-export class SnitchListComponent implements OnInit {
+export class SnitchListComponent implements OnInit, AfterViewInit {
   closeResult = '';
   modalReference: any;
 
@@ -48,6 +48,9 @@ back: boolean = false;
               private modalService: NgbModal,
               private commentService: CommentService,
               private _location: Location) { }
+  ngAfterViewInit(): void {
+   this.loadAll();
+  }
 
   ngOnInit(): void {
     this.loadAll();
@@ -160,6 +163,7 @@ addComment(comment, sId) {
   this.commentService.create(comment, sId).subscribe(
     comments => { // data stream returns from the server
       this.newComment = new Comment();
+      this.loadAllComments(sId);
       // this.router.navigateByUrl('/snitches');
     },
     fail => { // when the server responds with an Http status code in the error range
